@@ -1,0 +1,29 @@
+name = "surflatam-chat"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Workers AI binding ──────────────────────────────────────────
+[ai]
+binding = "AI"
+
+# ── Rate Limiting (10 requests per minute per IP) ───────────────
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"     # Replace with your Rate Limit namespace ID
+simple = { limit = 10, period = 60 }
+
+# ── Environment Variables ────────────────────────────────────────
+[vars]
+# Override in production via: wrangler secret put ALLOWED_ORIGIN
+ALLOWED_ORIGIN = "https://surflatam.pages.dev"
+
+# ── Routes: serve /api/chat from Pages domain ────────────────────
+# This is handled via _routes.json or Pages Function routing.
+# For standalone Worker deployment, configure routes in CF dashboard.
+
+# ── Observability ────────────────────────────────────────────────
+[observability]
+enabled = true
+head_sampling_rate = 1   # 100% sampling for demo visibility

@@ -1,0 +1,98 @@
+name: Deploy SurfLatam to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # ── Lint & Validate ────────────────────────────────────────────
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate HTML structure
+        run: |
+          echo "Validating key files exist..."
+          test -f public/index.html     && echo "✅ index.html"
+          test -f public/assets/style.css && echo "✅ style.css"
+          test -f public/assets/chat.js   && echo "✅ chat.js"
+          test -f public/_headers         && echo "✅ _headers"
+          test -f functions/api/chat.js   && echo "✅ Pages Function"
+
+  # ── Deploy to Cloudflare Pages ─────────────────────────────────
+  deploy:
+    name: Deploy to Cloudflare Pages
+    runs-on: ubuntu-latest
+    needs: validate
+    # Only deploy on push to main (not on PRs)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=surflatam --commit-dirty=true
+
+      - name: Deployment summary
+        run: |
+          echo "## 🌊 SurfLatam Deployed!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** https://surflatam.pages.dev" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Cloudflare Services Active" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Cloudflare Pages (CDN global)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Pages Functions (/api/chat)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Workers AI (Llama 3.1 8B)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ AI Gateway (guardrails + logging)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Security headers (_headers)" >> $GITHUB_STEP_SUMMARY
+
+  # ── Preview Deploy on PRs ──────────────────────────────────────
+  preview:
+    name: Preview Deploy (PR)
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy Preview to Cloudflare Pages
+        id: cf-deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=surflatam --commit-dirty=true
+
+      - name: Comment PR with preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## 🌊 SurfLatam Preview Deployed!\n\nCloudflare Pages preview is ready. Check your Cloudflare dashboard for the preview URL.\n\n**Powered by:** Cloudflare Pages · Workers AI · AI Gateway'
+            })

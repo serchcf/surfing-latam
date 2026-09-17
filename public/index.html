@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SurfLatam — Los Mejores Spots de Surf en América Latina</title>
+  <meta name="description" content="Descubre los mejores spots de surf en Latinoamérica: Chicama, Pavones, Punta de Lobos, Pipa y más. Tu guía definitiva del surf en LATAM." />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@5.0.18/files/inter-latin-wght-normal.woff2" />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="banner" aria-label="Demo environment notice">
+  <div class="marquee">
+    <span><b>SurfLatam</b> — Cloudflare Zero Trust Demo Environment</span>
+    <span>· SASE · ZTNA · AI Gateway · DLP · Zero Trust Access ·</span>
+    <span><b>SurfLatam</b> — Cloudflare Zero Trust Demo Environment</span>
+    <span>· SASE · ZTNA · AI Gateway · DLP · Zero Trust Access ·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-icon">🌊</span>
+      Surf<b>Latam</b>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="navlinks" id="navlinks">
+      <a href="#spots">Los Spots</a>
+      <a href="#cultura">La Cultura</a>
+      <a href="#historias">Historias</a>
+      <a href="#explora">Explorar</a>
+      <a class="btn btn-glass" href="https://dash.cloudflare.com" target="_blank" rel="noopener">
+        Employee Login
+      </a>
+      <a class="btn btn-wave" href="#spots">Descubrir</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <video class="hero-video" autoplay muted loop playsinline
+    poster="/assets/img/hero-poster.jpg"
+    fetchpriority="high">
+    <source src="/assets/video/surf-hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-fallback" style="background-image:url('/assets/img/hero-poster.jpg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="wrap">
+    <p class="eyebrow">América Latina · Surf Culture</p>
+    <h1>Encuentra tu <span class="highlight">ola.</span></h1>
+    <p class="lead">
+      De las olas más largas del mundo en Chicama hasta el poderío de Punta de Lobos.
+      Latinoamérica tiene los mejores spots de surf del planeta — y nosotros te los mostramos todos.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-wave" href="#spots">Ver los Spots</a>
+      <a class="btn btn-glass" href="#cultura">La Cultura del Surf</a>
+    </div>
+    <p class="reassure">6 países · 15+ spots · Temporada todo el año · Comunidad local</p>
+  </div>
+</header>
+
+<!-- BAND — LA LLAMADA -->
+<section class="band center" style="padding:0;">
+  <img class="band-media" src="/assets/img/ocean-latam.jpg"
+    alt="Océano Pacífico visto desde la costa latinoamericana"
+    loading="lazy" />
+  <div class="wrap">
+    <p class="eyebrow">Nuestra misión</p>
+    <h2>El océano no tiene fronteras.</h2>
+    <p class="lead">
+      Desde México hasta la Patagonia, el Pacífico y el Atlántico bañan costas que
+      guardan algunas de las olas más perfectas del planeta. Esta es la guía que necesitabas.
+    </p>
+  </div>
+</section>
+
+<!-- SPOTS -->
+<section id="spots">
+  <div class="wrap">
+    <p class="eyebrow">Los mejores spots</p>
+    <h2 style="max-width:20ch;">Seis países. Olas para toda la vida.</h2>
+    <p class="lead" style="margin-bottom:56px;">
+      Seleccionados por la comunidad local, verificados por surfistas profesionales.
+      Cada spot tiene su personalidad — encuentra la tuya.
+    </p>
+    <div class="spots-grid">
+
+      <!-- Chicama -->
+      <article class="spot-card" style="--accent:#00d2ff;">
+        <div class="spot-img-wrap">
+          <img src="/assets/img/spot-chicama.jpg"
+            alt="Chicama, Perú — la izquierda más larga del mundo"
+            loading="lazy" />
+          <span class="spot-badge">⭐ Legendario</span>
+        </div>
+        <div class="spot-body">
+          <div class="spot-country">🇵🇪 Perú</div>
+          <h3>Chicama</h3>
+          <p>La izquierda más larga del mundo: más de 4 km de ola continua.
+            Un punto break épico que todo surfista debe surfear al menos una vez en la vida.</p>
+          <div class="spot-meta">
+            <span class="tag">Izquierda</span>
+            <span class="tag">Point break</span>
+            <span class="tag">Mar.–Oct.</span>
+            <span class="tag tag-level nivel-avanzado">Avanzado</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pavones -->
+      <article class="spot-card" style="--accent:#00ff88;">
+        <div class="spot-img-wrap">
+          <img src="/assets/img/spot-pavones.jpg"
+            alt="Pavones, Costa Rica — surf en la jungla"
+            loading="lazy" />
+          <span class="spot-badge">🌴 Jungla</span>
+        </div>
+        <div class="spot-body">
+          <div class="spot-country">🇨🇷 Costa Rica</div>
+          <h3>Pavones</h3>
+          <p>Una de las izquierdas más largas del mundo rodeada de selva tropical.
+            Rincón remoto donde la naturaleza y las olas conviven en perfecta armonía.</p>
+          <div class="spot-meta">
+            <span class="tag">Izquierda</span>
+            <span class="tag">Point break</span>
+            <span class="tag">May.–Oct.</span>
+            <span class="tag tag-level nivel-intermedio">Intermedio</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Punta de Lobos -->
+      <article class="spot-card" style="--accent:#ff6b35;">
+        <div class="spot-img-wrap">
+          <img src="/assets/img/spot-punta-lobos.jpg"
+            alt="Punta de Lobos, Chile — olas poderosas del Pacífico Sur"
+            loading="lazy" />
+          <span class="spot-badge">🦁 Potencia</span>
+        </div>
+        <div class="spot-body">
+          <div class="spot-country">🇨🇱 Chile</div>
+          <h3>Punta de Lobos</h3>
+          <p>Aguas frías del Pacífico Sur, olas poderosas y un paisaje salvaje.
+            Sede de competencias WCT, este spot es para los que buscan el verdadero desafío.</p>
+          <div class="spot-meta">
+            <span class="tag">Izquierda</span>
+            <span class="tag">Point break</span>
+            <span class="tag">Mar.–Ago.</span>
+            <span class="tag tag-level nivel-avanzado">Avanzado</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pipa -->
+      <article class="spot-card" style="--accent:#f4e9d0;">
+        <div class="spot-img-wrap">
+          <img src="/assets/img/spot-pipa.jpg"
+            alt="Praia de Pipa, Brasil — beach break tropical"
+            loading="lazy" />
+          <span class="spot-badge">☀️ Tropical</span>
+        </div>
+        <div class="spot-body">
+          <div class="spot-country">🇧🇷 Brasil</div>
+          <h3>Praia de Pipa</h3>
+          <p>Beach break variado con olas para todos los niveles. Agua cálida todo el año,
+            delfines en el lineup y una vibrante cultura de surf y vida nocturna.</p>
+          <div class="spot-meta">
+            <span class="tag">Beach break</span>
+            <span class="tag">Ambas manos</span>
+            <span class="tag">Todo el año</span>
+            <span class="tag tag-level nivel-principiante">Principiante</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- El Palmar -->
+      <article class="spot-card" style="--accent:#ffd700;">
+        <div class="spot-img-wrap">
+          <img src="/assets/img/spot-palmar.jpg"
+            alt="El Palmar, Ecuador — beach break consistente"
+            loading="lazy" />
+          <span class="spot-badge">🌅 Consistente</span>
+        </div>
+        <div class="spot-body">
+          <div class="spot-country">🇪🇨 Ecuador</div>
+          <h3>El Palmar</h3>
+          <p>Beach break consistente en la Costa del Pacífico ecuatoriano.
+            Aguas cálidas, oleaje regular y una comunidad local amigable. Perfecto para progresar.</p>
+          <div class="spot-meta">
+            <span class="tag">Beach break</span>
+            <span class="tag">Izquierda/Derecha</span>
+            <span class="tag">Dic.–Mar.</span>
+            <span class="tag tag-level nivel-intermedio">Intermedio</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Puerto Escondido -->
+      <article class="spot-card" style="--accent:#ff6b35;">
+        <div class="spot-img-wrap">
+          <img src="/assets/img/spot-puerto-escondido.jpg"
+            alt="Puerto Escondido, Oaxaca, México — el Pipeline Mexicano"
+            loading="lazy" />
+          <span class="spot-badge">💀 Pipeline MX</span>
+        </div>
+        <div class="spot-body">
+          <div class="spot-country">🇲🇽 México</div>
+          <h3>Puerto Escondido</h3>
+          <p>El "Pipeline Mexicano" de Oaxaca: un shore break explosivo de fama mundial.
+            Olas huecas y poderosas que rompen en arena, escenario del Mexican Open y
+            destino de los mejores big wave surfers del planeta.</p>
+          <div class="spot-meta">
+            <span class="tag">Beach break</span>
+            <span class="tag">Derecha/Izquierda</span>
+            <span class="tag">May.–Sep.</span>
+            <span class="tag tag-level nivel-avanzado">Avanzado</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CULTURA -->
+<section class="band" id="cultura" style="padding:0;">
+  <img class="band-media" src="/assets/img/surf-cultura.jpg"
+    alt="Surfista caminando hacia el mar al amanecer en LATAM"
+    loading="lazy" />
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">La cultura del surf</p>
+        <h2>Más que una tabla.<br>Una forma de vida.</h2>
+        <p class="lead">
+          El surf en Latinoamérica es mucho más que un deporte. Es la filosofía del
+          amanecer en el agua, del respeto por el océano, de la comunidad que se forma
+          en el lineup. Cada país tiene su propia identidad, su propio ritmo, su propia ola.
+        </p>
+        <p class="muted">
+          Desde los pescadores de Chicama que convirtieron sus botes en tablas, hasta los
+          profesionales chilenos que compiten en el circuito mundial. El surf latinoamericano
+          tiene historia, alma y futuro.
+        </p>
+      </div>
+      <div>
+        <p class="fieldnote">
+          "El lineup en Pavones es como un idioma sin palabras. Todos saben cuándo es tu turno,
+          todos se cuidan. Es la mejor clase de comunicación que existe."
+          <span class="by">— Rodrigo M., surfista · Jacó, Costa Rica</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding:0;">
+  <div class="wrap">
+    <div class="specs">
+      <div class="spec">
+        <div class="num">6<small> países</small></div>
+        <div class="lbl">Destinos</div>
+      </div>
+      <div class="spec">
+        <div class="num">15<small>+ spots</small></div>
+        <div class="lbl">Cubiertos</div>
+      </div>
+      <div class="spec">
+        <div class="num">12<small> meses</small></div>
+        <div class="lbl">Temporada</div>
+      </div>
+      <div class="spec">
+        <div class="num">4<small> km</small></div>
+        <div class="lbl">Ola más larga</div>
+      </div>
+      <div class="spec">
+        <div class="num">∞<small></small></div>
+        <div class="lbl">Memorias</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIAS -->
+<section id="historias">
+  <div class="wrap">
+    <p class="eyebrow">Historias de surfistas</p>
+    <h2 style="max-width:18ch;">El océano cambia personas.</h2>
+    <p class="lead" style="margin-bottom:48px;">
+      Historias reales de surfistas que encontraron su ola en LATAM.
+    </p>
+    <div class="quotes">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>"Llegué a Chicama sin saber que existía. Me quedé tres semanas. La ola te atrapa,
+          la comunidad te retiene. Volví cinco veces desde entonces."</p>
+        <div class="who">
+          <div class="avatar">AM</div>
+          <div>
+            <div class="n">Alejandro M.</div>
+            <div class="r">Surfista · Ciudad de México, México</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>"Punta de Lobos me enseñó el respeto. El agua fría, las rocas, la potencia.
+          Salí de ahí siendo un surfista diferente. Más humilde, más fuerte."</p>
+        <div class="who">
+          <div class="avatar">VR</div>
+          <div>
+            <div class="n">Valentina R.</div>
+            <div class="r">Surfista profesional · Santiago, Chile</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>"Empecé en Pipa porque el agua era cálida y no daba tanto miedo. Hoy soy instructor.
+          Ese primer día en Pipa lo cambió todo para mí."</p>
+        <div class="who">
+          <div class="avatar">JS</div>
+          <div>
+            <div class="n">João S.</div>
+            <div class="r">Instructor de surf · Natal, Brasil</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOUDFLARE TECH BAND -->
+<section class="band" style="padding:0;">
+  <img class="band-media" src="/assets/img/surfer-walk.jpg"
+    alt="Surfista caminando al amanecer"
+    loading="lazy" />
+  <div class="wrap">
+    <div style="max-width:52ch;">
+      <p class="eyebrow">Powered by Cloudflare</p>
+      <h2>Seguridad sin compromisos.</h2>
+      <p class="lead">
+        SurfLatam corre 100% en infraestructura Cloudflare. Desde el hosting hasta el chatbot
+        de IA, cada capa de la plataforma implementa Zero Trust y SASE por diseño.
+      </p>
+      <div class="points">
+        <div class="pt">
+          <div class="k">Cloudflare Pages</div>
+          <p>Hosting global con CDN automático. Latencia mínima desde cualquier punto de LATAM.</p>
+        </div>
+        <div class="pt">
+          <div class="k">AI Gateway + DLP</div>
+          <p>El chatbot está protegido por guardrails, filtrado de contenido y prevención de fuga de datos.</p>
+        </div>
+        <div class="pt">
+          <div class="k">Zero Trust Access</div>
+          <p>Acceso de empleados protegido por identidad, sin VPN. Verificación continua.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA EXPLORA -->
+<section class="band center cta" id="explora" style="padding:0;">
+  <video class="band-media" autoplay muted loop playsinline
+    poster="/assets/img/cta-poster.jpg">
+    <source src="/assets/video/surf-cta.mp4" type="video/mp4" />
+  </video>
+  <div class="wrap">
+    <p class="eyebrow">Empieza tu aventura</p>
+    <h2>Tu próxima ola te espera.</h2>
+    <p>
+      Pregunta a nuestro Surf Concierge por el mejor spot según tu nivel,
+      la temporada que prefieras y el tipo de ola que buscas.
+    </p>
+    <a class="btn btn-wave" href="#" id="openChat">Hablar con el Surf Bot 🌊</a>
+  </div>
+</section>
+
+<!-- SE DEMO PANEL (Cloudflare SASE runbook) -->
+<section id="sePanel" aria-label="Cloudflare SASE Demo Runbook"></section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand brand-lg" href="/">
+          <span class="brand-icon">🌊</span> Surf<b>Latam</b>
+        </a>
+        <p class="muted" style="margin-top:14px;max-width:34ch;">
+          Tu guía definitiva del surf en América Latina.
+          Powered by Cloudflare SASE &amp; Zero Trust.
+        </p>
+      </div>
+      <div>
+        <h4>Destinos</h4>
+        <a href="#spots">Chicama, Perú</a>
+        <a href="#spots">Pavones, Costa Rica</a>
+        <a href="#spots">Punta de Lobos, Chile</a>
+        <a href="#spots">Pipa, Brasil</a>
+        <a href="#spots">El Palmar, Ecuador</a>
+        <a href="#spots">Puerto Escondido, México</a>
+      </div>
+      <div>
+        <h4>Comunidad</h4>
+        <a href="#cultura">Cultura del Surf</a>
+        <a href="#historias">Historias</a>
+        <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">Employee Login</a>
+      </div>
+      <div>
+        <h4>Soporte</h4>
+        <a href="mailto:hola@surflatam.dev">hola@surflatam.dev</a>
+        <a href="#">Guía de Seguridad</a>
+        <a href="#">Política de Privacidad</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 SurfLatam. Un entorno demo de Cloudflare Zero Trust — empresa ficticia, no un producto real.</span>
+      <span>Encuentra tu ola. 🌊</span>
+    </div>
+    <p class="disclaimer">
+      SurfLatam es un entorno demo ficticio creado para demostrar soluciones Cloudflare SASE/ZTNA.
+      El chatbot usa Cloudflare Workers AI con guardrails de AI Gateway.
+      Las imágenes son referenciales. Siempre consulta con expertos locales antes de practicar surf.
+    </p>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<button id="sl-chat-toggle" aria-label="Abrir el Surf Concierge">🌊</button>
+<div id="sl-chat-panel" role="dialog" aria-label="Surf Concierge" aria-modal="true">
+  <div class="sl-chat-head">
+    <div class="sl-chat-avatar">🏄</div>
+    <div>
+      <div class="t">Surf Concierge</div>
+      <div class="s">SurfLatam AI · Powered by Cloudflare</div>
+    </div>
+    <button class="sl-chat-close" id="sl-chat-close" aria-label="Cerrar chat">✕</button>
+  </div>
+  <div class="sl-msgs" id="sl-msgs"></div>
+  <div class="sl-typing" id="sl-typing" style="display:none;">El concierge está escribiendo…</div>
+  <div class="sl-input">
+    <input
+      id="sl-input"
+      type="text"
+      placeholder="Pregunta sobre surf en LATAM…"
+      autocomplete="off"
+      maxlength="500"
+    />
+    <button id="sl-send" aria-label="Enviar mensaje">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
+  </div>
+  <div class="sl-chat-footer">
+    Protegido por <strong>Cloudflare AI Gateway</strong> · DLP · Guardrails activos
+  </div>
+</div>
+
+<script src="/assets/chat.js" defer></script>
+</body>
+</html>

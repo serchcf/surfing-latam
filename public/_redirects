@@ -1,0 +1,7 @@
+# SurfLatam — Cloudflare Pages Redirects
+# /api/* calls are proxied to the surflatam-chat Worker.
+# In Cloudflare Pages, this is handled via Pages Functions.
+# This file handles any misc redirects.
+
+# Redirect bare domain to https (handled by Cloudflare automatically)
+# Explicit SPA fallback — not needed for static HTML

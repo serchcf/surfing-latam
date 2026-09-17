@@ -1,0 +1,31 @@
+# SurfLatam — Gitignore
+
+# Node
+node_modules/
+npm-debug.log*
+.npm
+
+# Wrangler
+.wrangler/
+.dev.vars
+*.d1/
+
+# Build outputs
+dist/
+.output/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/settings.json
+
+# Large media (add your own images/videos, don't commit large binaries)
+public/assets/video/*.mp4
