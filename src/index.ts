@@ -7,7 +7,6 @@
 
 export interface Env {
   AI: any;
-  ASSETS?: any;
   RATE_LIMITER?: any;
   ALLOWED_ORIGIN?: string;
 }
@@ -203,11 +202,6 @@ export default {
       }
 
       return jsonResponse({ reply: cleanResponse }, 200, cors);
-    }
-
-    // Static Assets Fallback (si ASSETS binding está presente)
-    if (env.ASSETS) {
-      return env.ASSETS.fetch(request);
     }
 
     return new Response('Not found', { status: 404 });
