@@ -1,5 +1,5 @@
 /* ============================================================
-   SurfLatam Chat — Frontend Logic
+   SurfLatam Chat — Frontend Logic (Bilingual ES / PT-BR)
    Calls /api/chat (Cloudflare Worker) with guardrail awareness
    ============================================================ */
 
@@ -9,14 +9,21 @@
   /* ── Config ── */
   const API_ENDPOINT = '/api/chat';
   const MAX_HISTORY  = 10;   // Keep last N messages in context
-  const WELCOME_MSG  = '¡Hola! 🤙 Soy el Surf Concierge de SurfLatam. ' +
-    'Puedo ayudarte con todo sobre surf en Latinoamérica: ' +
-    'spots, condiciones, técnicas, equipamiento y temporadas. ¿Qué quieres saber?';
+
+  function getWelcomeMsg() {
+    if (window.getTranslation) {
+      return window.getTranslation('chatWelcome');
+    }
+    return '¡Hola! 🤙 Soy el Surf Concierge de SurfLatam. ' +
+      'Puedo ayudarte con todo sobre surf en Latinoamérica: ' +
+      'spots, condiciones, técnicas, equipamiento y temporadas. ¿Qué quieres saber?';
+  }
 
   /* ── State ── */
   let isOpen    = false;
   let isLoading = false;
   let history   = [];   // [{role: 'user'|'assistant', content: string}]
+  let welcomeNode = null;
 
   /* ── DOM refs ── */
   const toggle  = document.getElementById('sl-chat-toggle');
@@ -65,7 +72,7 @@
 
     // Show welcome message on first open
     if (msgs.children.length === 0) {
-      appendMsg(WELCOME_MSG, 'bot');
+      welcomeNode = appendMsg(getWelcomeMsg(), 'bot');
     }
   }
 
@@ -91,6 +98,14 @@
     if (e.key === 'Escape' && isOpen) closeChat();
   });
 
+  // React to language change
+  window.addEventListener('languagechange', () => {
+    // If only welcome message is present, update it to the new language
+    if (welcomeNode && msgs.children.length === 1) {
+      welcomeNode.textContent = getWelcomeMsg();
+    }
+  });
+
   /* ── Send message ── */
   async function sendMessage() {
     if (isLoading) return;
@@ -109,32 +124,36 @@
     setLoading(true);
     setTyping(true);
 
+    const currentLang = window.getCurrentLanguage ? window.getCurrentLanguage() : 'es';
+
     try {
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: raw, history: history.slice(-MAX_HISTORY * 2) }),
+        body: JSON.stringify({
+          message: raw,
+          history: history.slice(-MAX_HISTORY * 2),
+          lang: currentLang,
+        }),
       });
 
       setTyping(false);
 
       if (response.status === 429) {
-        appendMsg(
-          '⏳ Has enviado muchos mensajes. Por favor espera un momento antes de continuar.',
-          'error'
-        );
+        const rateLimitMsg = currentLang === 'pt'
+          ? '⏳ Você enviou muitas mensagens. Por favor, aguarde um momento antes de continuar.'
+          : '⏳ Has enviado muchos mensajes. Por favor espera un momento antes de continuar.';
+        appendMsg(rateLimitMsg, 'error');
         setLoading(false);
         return;
       }
 
       if (response.status === 451) {
         // Content blocked by guardrails (DLP / topic filter)
-        appendMsg(
-          '🛡️ Tu mensaje fue bloqueado por las políticas de seguridad de Cloudflare. ' +
-          'Solo puedo hablar sobre surf. Si enviaste información personal, ' +
-          'esta ha sido protegida por DLP.',
-          'blocked'
-        );
+        const dlpMsg = window.getTranslation
+          ? window.getTranslation('chatBlockedDlp')
+          : '🛡️ Tu mensaje fue bloqueado por las políticas de seguridad de Cloudflare.';
+        appendMsg(dlpMsg, 'blocked');
         history.pop(); // Remove from history since it was blocked
         setLoading(false);
         return;
@@ -147,10 +166,8 @@
       const data = await response.json();
 
       if (data.blocked) {
-        appendMsg(
-          '🛡️ ' + (data.reason || 'Respuesta bloqueada por políticas de contenido. Solo hablo de surf.'),
-          'blocked'
-        );
+        const blockedReason = data.reason || (window.getTranslation ? window.getTranslation('chatBlockedTopic') : 'Bloqueado.');
+        appendMsg('🛡️ ' + blockedReason, 'blocked');
         history.pop();
       } else if (data.reply) {
         appendMsg(data.reply, 'bot');
@@ -162,10 +179,10 @@
     } catch (err) {
       setTyping(false);
       console.error('[SurfLatam Chat]', err);
-      appendMsg(
-        '🌊 Hubo un problema al conectar con el servidor. Intenta de nuevo.',
-        'error'
-      );
+      const connErrMsg = currentLang === 'pt'
+        ? '🌊 Ocorreu um problema ao conectar com o servidor. Tente novamente.'
+        : '🌊 Hubo un problema al conectar con el servidor. Intenta de nuevo.';
+      appendMsg(connErrMsg, 'error');
     } finally {
       setLoading(false);
       input.focus();
@@ -188,7 +205,7 @@
       const open = navlinks.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(open));
     });
-    // Close when clicking a nav link
+    // Close when clicking a nav link (except lang buttons)
     navlinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navlinks.classList.remove('open'));
     });

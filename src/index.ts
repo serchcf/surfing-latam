@@ -28,33 +28,39 @@ const OFF_TOPIC_KEYWORDS: string[] = [
   'pornografía', 'pornografia',
 ];
 
-/* ── Surf keywords: Validación de respuesta ── */
+/* ── Surf keywords: Validación de respuesta (ES / PT) ── */
 const SURF_KEYWORDS: string[] = [
-  'surf', 'ola', 'tabla', 'playa', 'mar', 'océano', 'oceano',
-  'spot', 'chicama', 'pavones', 'pipa', 'lobos', 'palmar', 'escondido', 'oaxaca',
+  // Español
+  'surf', 'ola', 'olas', 'tabla', 'tablas', 'playa', 'playas', 'mar', 'océano', 'oceano',
+  'spot', 'spots', 'chicama', 'pavones', 'pipa', 'lobos', 'palmar', 'escondido', 'oaxaca',
   'tubo', 'maniobra', 'remar', 'lineup', 'break', 'wax',
   'shortboard', 'longboard', 'leash', 'neopreno', 'duck dive',
   'temporada', 'swell', 'marea', 'corriente', 'viento', 'costa',
   'pacífico', 'pacifico', 'atlántico', 'atlantico', 'latam', 'méxico', 'mexico',
-  'solamente', 'únicamente', 'solo puedo', 'lamentablemente',
+  // Português
+  'onda', 'ondas', 'prancha', 'pranchas', 'pico', 'picos', 'marola', 'drop', 'outside',
+  'inside', 'parafina', 'quilha', 'quilhas', 'ondulação', 'ondulacao', 'brasil', 'brasileiro',
+  // Respuestas seguras / guardrails
+  'solamente', 'únicamente', 'solo puedo', 'lamentablemente', 'apenas', 'somente', 'só posso',
 ];
 
-const SYSTEM_PROMPT = `Eres SurfBot, el Surf Concierge experto de SurfLatam.
-Tu misión exclusiva es ayudar con preguntas sobre surf en Latinoamérica.
+const SYSTEM_PROMPT = `Eres SurfBot (ou SurfBot), el Surf Concierge experto de SurfLatam.
+Tu misión exclusiva es ayudar con preguntas sobre surf en Latinoamérica. Eres bilingüe y respondes con fluidez nativa en ESPAÑOL o en PORTUGUÉS BRASILEÑO según el idioma del usuario.
 
-PUEDES responder sobre:
-- Spots de surf en LATAM: Puerto Escondido (México), Chicama (Perú), Pavones (Costa Rica), Punta de Lobos (Chile), Praia de Pipa (Brasil), El Palmar (Ecuador) y más
-- Temporadas, condiciones de swell, viento y oleaje por región
-- Técnicas de surf: remar, take-off, duck dive, tubos, maniobras
-- Equipamiento: tipos de tablas (shortboard, longboard, fish, gun), trajes de neopreno, leashes, wax
-- Seguridad en el agua, corrientes de resaca, etiqueta en el lineup
+PUEDES responder sobre / VOCÊ PODE responder sobre:
+- Spots/Picos de surf en LATAM: Puerto Escondido (México), Chicama (Perú), Pavones (Costa Rica), Punta de Lobos (Chile), Praia de Pipa (Brasil), El Palmar (Ecuador), Saquarema, Fernando de Noronha y más
+- Temporadas, condiciones de swell, viento y oleaje / ondulação por región
+- Técnicas de surf: remar, remada, take-off, drop, duck dive, tubos, maniobras / manobras
+- Equipamiento / Equipamentos: tipos de tablas / pranchas (shortboard, longboard, fish, gun), trajes de neopreno / roupas de borracha, leashes / cordinhas, wax / parafina
+- Seguridad en el agua, corrientes de retorno, etiqueta en el lineup / outside
 - Cultura y comunidad del surf latinoamericano
 
-NO DEBES responder sobre temas ajenos al surf (política, economía, tecnología no relacionada, etc.).
-Si te preguntan algo fuera del surf, responde:
-"Solo puedo ayudarte con temas de surf en LATAM. ¡Pregúntame sobre olas, spots, técnicas o equipamiento! 🌊"
+NO DEBES responder sobre temas ajenos al surf (política, economía, etc.).
+Si te preguntan algo fuera del surf:
+- En español: "Solo puedo ayudarte con temas de surf en LATAM. ¡Pregúntame sobre olas, spots, técnicas o equipamiento! 🌊"
+- Em português: "Só posso ajudar com temas sobre surf na América Latina. Pergunte-me sobre picos, ondas, técnicas ou pranchas! 🌊"
 
-Responde en el mismo idioma que el usuario con tono entusiasta, amigable y conciso. Usa emojis de surf: 🌊 🏄 🤙`;
+Responde en el mismo idioma que el usuario (español o portugués) con tono entusiasta, amigable y conciso. Usa emojis de surf: 🌊 🏄 🤙`;
 
 function containsSensitiveData(text: string): boolean {
   return DLP_PATTERNS.some((p) => p.test(text));
@@ -90,6 +96,12 @@ export default {
     // Preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: cors });
+    }
+
+    // Handle Geolocation API route (powered by Cloudflare edge request.cf)
+    if (url.pathname === '/api/geo') {
+      const country = (request as any).cf?.country || request.headers.get('cf-ipcountry') || 'XX';
+      return jsonResponse({ country, isBrazil: country === 'BR' }, 200, cors);
     }
 
     // Handle Chat API route
