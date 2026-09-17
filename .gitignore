@@ -27,5 +27,5 @@ Thumbs.db
 .idea/
 .vscode/settings.json
 
-# Large media (add your own images/videos, don't commit large binaries)
-public/assets/video/*.mp4
+# Media
+# Large video binaries >50MB should use Cloudflare Stream or R2
