@@ -164,9 +164,22 @@ export async function onRequestPost({ request, env }) {
       }
     );
     aiResponse = result?.response || result?.result?.response || '';
-  } catch (err) {
-    console.error('[SurfLatam] AI error:', err);
-    return json({ error: 'AI service temporarily unavailable.' }, 503, corsHeaders);
+  } catch (gwErr) {
+    try {
+      const result = await env.AI.run(
+        '@cf/meta/llama-3.1-8b-instruct',
+        {
+          messages,
+          max_tokens: 400,
+          temperature: 0.7,
+          stream: false,
+        }
+      );
+      aiResponse = result?.response || result?.result?.response || '';
+    } catch (err) {
+      console.error('[SurfLatam] AI error:', err);
+      return json({ error: 'AI service temporarily unavailable.' }, 503, corsHeaders);
+    }
   }
 
   if (!aiResponse) {
