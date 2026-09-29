@@ -137,7 +137,7 @@ export async function onRequestPost({ request, env }) {
   let aiResponse;
   try {
     const result = await env.AI.run(
-      '@cf/meta/llama-3.1-8b-instruct',
+      '@cf/meta/llama-3.1-8b-instruct-fast',
       {
         messages,
         max_tokens: 400,
@@ -156,7 +156,7 @@ export async function onRequestPost({ request, env }) {
   } catch (gwErr) {
     try {
       const result = await env.AI.run(
-        '@cf/meta/llama-3.1-8b-instruct',
+        '@cf/meta/llama-3.1-8b-instruct-fast',
         {
           messages,
           max_tokens: 400,

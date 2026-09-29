@@ -59,7 +59,7 @@ jobs:
           echo "### Cloudflare Services Active" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Cloudflare Pages (CDN global)" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Pages Functions (/api/chat)" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Workers AI (Llama 3.1 8B)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Workers AI (Llama 3.1 8B Fast)" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ AI Gateway (guardrails + logging)" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Security headers (_headers)" >> $GITHUB_STEP_SUMMARY
 
