@@ -357,10 +357,7 @@
     <div style="max-width:52ch;">
       <p class="eyebrow" data-i18n="cfEyebrow">Powered by Cloudflare</p>
       <h2 data-i18n="cfH2">Seguridad sin compromisos.</h2>
-      <p class="lead" data-i18n="cfLead">
-        SurfLatam corre 100% en infraestructura Cloudflare. Desde el hosting hasta el chatbot
-        de IA, cada capa de la plataforma implementa Zero Trust y SASE por diseño.
-      </p>
+      <p class="lead" data-i18n="cfLead">SurfLatam muestra servicios Cloudflare como Pages, Workers AI, Access y Gateway. Los controles de red e identidad requieren políticas activas en tu cuenta.</p>
       <div class="points">
         <div class="pt">
           <div class="k" data-i18n="cfPt1T">Cloudflare Pages</div>
@@ -368,11 +365,11 @@
         </div>
         <div class="pt">
           <div class="k" data-i18n="cfPt2T">AI Gateway + DLP</div>
-          <p data-i18n="cfPt2D">El chatbot está protegido por guardrails, filtrado de contenido y prevención de fuga de datos.</p>
+          <p data-i18n="cfPt2D">Filtrado DNS y HTTP y controles DLP sujetos a políticas y rutas configuradas en Cloudflare.</p>
         </div>
         <div class="pt">
           <div class="k" data-i18n="cfPt3T">Zero Trust Access</div>
-          <p data-i18n="cfPt3D">Acceso de empleados protegido por identidad, sin VPN. Verificación continua.</p>
+          <p data-i18n="cfPt3D">Puede proteger aplicaciones por identidad y políticas. Requiere configurar una aplicación y reglas en Cloudflare Access.</p>
         </div>
       </div>
     </div>
@@ -389,10 +386,9 @@
     <p class="eyebrow" data-i18n="ctaEyebrow">Empieza tu aventura</p>
     <h2 data-i18n="ctaH2">Tu próxima ola te espera.</h2>
     <p data-i18n="ctaLead">
-      Pregunta a nuestro Surf Concierge por el mejor spot según tu nivel,
-      la temporada que prefieras y el tipo de ola que buscas.
+      Consulta al asistente sobre Zero Trust Access, SWG, DLP y los servicios Cloudflare que mostramos en este demo.
     </p>
-    <a class="btn btn-wave" href="#" id="openChat" data-i18n="ctaBtn">Hablar con el Surf Bot 🌊</a>
+    <a class="btn btn-wave" href="#" id="openChat" data-i18n="ctaBtn">Consultar asistente Cloudflare</a>
   </div>
 </section>
 
@@ -439,21 +435,19 @@
       <span data-i18n="footerLegal2">Encuentra tu ola. 🌊</span>
     </div>
     <p class="disclaimer" data-i18n="footerDisclaimer">
-      SurfLatam es un entorno demo ficticio creado para demostrar soluciones Cloudflare SASE/ZTNA.
-      El chatbot usa Cloudflare Workers AI con guardrails de AI Gateway.
-      Las imágenes son referenciales. Siempre consulta con expertos locales antes de practicar surf.
+      SurfLatam es un entorno demo ficticio. El chat usa Workers AI, un filtro DLP implementado en la aplicación y una integración opcional con AI Gateway. Access y Gateway (SWG) requieren políticas configuradas por separado en Cloudflare.
     </p>
   </div>
 </footer>
 
 <!-- CHATBOT -->
-<button id="sl-chat-toggle" aria-label="Abrir el Surf Concierge">🌊</button>
+<button id="sl-chat-toggle" aria-label="Abrir el asistente Cloudflare">🌊</button>
 <div id="sl-chat-panel" role="dialog" aria-label="Surf Concierge" aria-modal="true">
   <div class="sl-chat-head">
     <div class="sl-chat-avatar">🏄</div>
     <div>
-      <div class="t" data-i18n="chatTitle">Surf Concierge</div>
-      <div class="s" data-i18n="chatSub">SurfLatam AI · Powered by Cloudflare</div>
+      <div class="t" data-i18n="chatTitle">Asistente Cloudflare</div>
+      <div class="s" data-i18n="chatSub">Demo SurfLatam · Workers AI</div>
     </div>
     <button class="sl-chat-close" id="sl-chat-close" aria-label="Cerrar chat">✕</button>
   </div>
@@ -463,7 +457,7 @@
     <input
       id="sl-input"
       type="text"
-      placeholder="Pregunta sobre surf en LATAM…"
+      placeholder="Pregunta sobre ZTNA, SWG o DLP…"
       data-i18n-placeholder="chatPlaceholder"
       autocomplete="off"
       maxlength="500"
@@ -472,9 +466,7 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </button>
   </div>
-  <div class="sl-chat-footer" data-i18n="chatFooter">
-    Protegido por <strong>Cloudflare AI Gateway</strong> · DLP · Guardrails activos
-  </div>
+  <div class="sl-chat-footer" data-i18n="chatFooter">Workers AI · Alcance limitado · DLP del chat</div>
 </div>
 
 <script src="/assets/chat.js" defer></script>

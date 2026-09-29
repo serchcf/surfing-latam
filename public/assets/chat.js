@@ -14,9 +14,9 @@
     if (window.getTranslation) {
       return window.getTranslation('chatWelcome');
     }
-    return '¡Hola! 🤙 Soy el Surf Concierge de SurfLatam. ' +
-      'Puedo ayudarte con todo sobre surf en Latinoamérica: ' +
-      'spots, condiciones, técnicas, equipamiento y temporadas. ¿Qué quieres saber?';
+    return 'Hola. Puedo explicarte los servicios Cloudflare de este demo: ' +
+      'Zero Trust Access (ZTNA), Gateway (SWG), DLP, Pages, Workers AI y AI Gateway. ' +
+      'También puedo distinguir qué está implementado aquí y qué requiere configuración en Cloudflare.';
   }
 
   /* ── State ── */

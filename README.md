@@ -14,9 +14,10 @@ Un sitio web de surf enfocado en los mejores spots de Latinoamérica, con un cha
 | **Cloudflare Pages** | Hosting del sitio estático con CDN global |
 | **Pages Functions** | API del chatbot (`/api/chat`) serverless |
 | **Workers AI** | Modelo Llama 3.1 8B para el chatbot de surf |
-| **AI Gateway** | Logging centralizado, caching, rate limiting del AI |
-| **AI Gateway Guardrails** | DLP, topic filtering, output validation |
-| **Cloudflare Access (ZTNA)** | "Employee Login" protegido por Zero Trust |
+| **AI Gateway** | Integración opcional para enrutar llamadas a Workers AI, con logging/caching si se configura |
+| **Guardrails del chatbot** | DLP y filtro de alcance ejecutados en la Pages Function |
+| **Cloudflare Access (ZTNA)** | Requiere crear una aplicación y políticas de acceso en el dashboard |
+| **Cloudflare Gateway (SWG)** | Requiere políticas Gateway y enrutar tráfico de prueba con WARP u otro método compatible |
 | **Security Headers** | CSP, HSTS, X-Frame-Options via `_headers` |
 | **GitHub Actions CI/CD** | Deploy automático a Pages en cada push a `main` |
 
@@ -180,12 +181,12 @@ Agregar imágenes en `public/assets/img/` con estos nombres:
 
 ---
 
-## 🛡️ Guardrails de Seguridad — SASE/ZTNA Demo
+## 🛡️ Guardrails del Chatbot
 
-El chatbot implementa **defensa en profundidad**:
+La Pages Function aplica controles al contenido enviado al chat. No son políticas SWG de red:
 
 ```
-Usuario → [DLP Input] → [Topic Filter] → [AI Gateway] → [Workers AI] → [Output Guard] → Respuesta
+Usuario → [DLP de la aplicación] → [Filtro de alcance] → [AI Gateway opcional] → [Workers AI] → [Filtro de respuesta] → Respuesta
 ```
 
 ### Capa 1: DLP (Data Loss Prevention)
@@ -195,18 +196,21 @@ Bloquea mensajes que contengan:
 - Contraseñas / API keys
 - Números de seguridad social
 
-### Capa 2: Topic Guardrail (Input)
-Rechaza preguntas sobre temas fuera del surf:
-política, violencia, hacking, contenido inapropiado, etc.
+### Filtro de alcance
+El chat responde sobre los servicios Cloudflare presentados en este demo: Pages, Workers AI, AI Gateway, DLP, Zero Trust Access y Gateway/SWG.
 
-### Capa 3: AI Gateway
-- **Rate limiting**: 20 req/min
-- **Caching**: Respuestas similares se cachean (ahorro de costo)
-- **Logging**: Auditoría completa de todas las interacciones
-- **Observability**: Métricas en tiempo real
+### AI Gateway
+La Pages Function intenta enrutar las solicitudes por el gateway `surflatam-ai-gateway`; si falla, usa Workers AI directamente. Logging, caché y rate limiting dependen de la configuración del gateway.
 
-### Capa 4: Output Guardrail
-Valida que la respuesta del AI sea sobre surf antes de enviarla al usuario.
+### Filtro de respuesta
+Rechaza respuestas que no mencionen los servicios permitidos. Es un filtro simple por palabras clave, no una garantía semántica.
+
+## 🔐 Requisitos para demostrar Access y SWG
+
+- **DLP del chat** está implementado en la Pages Function y puede probarse con datos de prueba ficticios; el filtro solo cubre mensajes del chat.
+- **Zero Trust Access (ZTNA)** no protege actualmente una ruta de este repositorio. Para demostrarlo, crea una aplicación self-hosted en Cloudflare Access, asigna el dominio/ruta que quieras proteger y configura una política de acceso con usuarios de prueba.
+- **Gateway/SWG** no inspecciona el tráfico de navegación de este sitio. Configura políticas DNS/HTTP en Cloudflare Gateway y conecta un dispositivo de prueba mediante WARP o un método de enrutamiento compatible.
+- **AI Gateway no es SWG**: protege y observa llamadas a modelos de IA; no sustituye el filtrado web de Gateway.
 
 ---
 
