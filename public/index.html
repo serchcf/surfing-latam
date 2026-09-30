@@ -30,7 +30,7 @@
       <span class="brand-icon">🌊</span>
       Surf<b>Latam</b>
     </a>
-    <button class="nav-toggle" aria-label="Abrir menú" id="navToggle">
+    <button class="nav-toggle" aria-label="Abrir menú" data-i18n-aria-label="navToggleLabel" id="navToggle">
       <span></span><span></span><span></span>
     </button>
     <div class="navlinks" id="navlinks">
@@ -43,10 +43,11 @@
       </a>
       <a class="btn btn-wave" href="#spots" data-i18n="navDiscover">Descubrir</a>
       
-      <!-- Selector de Idioma (ES / PT) -->
-      <div class="lang-switch" id="langSwitch" aria-label="Seleccionar idioma / Selecionar idioma">
+      <!-- Language selector (ES / PT / EN-US) -->
+      <div class="lang-switch" id="langSwitch" aria-label="Seleccionar idioma" data-i18n-aria-label="languageSelectorLabel">
         <button class="lang-btn active" data-lang="es" aria-pressed="true">🇪🇸 ES</button>
         <button class="lang-btn" data-lang="pt" aria-pressed="false">🇧🇷 PT</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">🇺🇸 EN</button>
       </div>
     </div>
   </div>
@@ -80,6 +81,7 @@
 <section class="band center" style="padding:0;">
   <img class="band-media" src="/assets/img/ocean-latam.jpg"
     alt="Océano Pacífico visto desde la costa latinoamericana"
+    data-i18n-alt="oceanImageAlt"
     loading="lazy" />
   <div class="wrap">
     <p class="eyebrow" data-i18n="misionEyebrow">Nuestra misión</p>
@@ -107,11 +109,12 @@
         <div class="spot-img-wrap">
           <img src="/assets/img/spot-chicama.jpg"
             alt="Chicama, Perú — la izquierda más larga del mundo"
+            data-i18n-alt="spotChicamaAlt"
             loading="lazy" />
-          <span class="spot-badge">⭐ Legendario</span>
+          <span class="spot-badge">⭐ <span data-i18n="badgeLegendary">Legendario</span></span>
         </div>
         <div class="spot-body">
-          <div class="spot-country">🇵🇪 Perú</div>
+          <div class="spot-country">🇵🇪 <span data-i18n="countryPeru">Perú</span></div>
           <h3 data-i18n="spotChicamaTitle">Chicama</h3>
           <p data-i18n="spotChicamaDesc">La izquierda más larga del mundo: más de 4 km de ola continua.
             Un punto break épico que todo surfista debe surfear al menos una vez en la vida.</p>
@@ -129,11 +132,12 @@
         <div class="spot-img-wrap">
           <img src="/assets/img/spot-pavones.jpg"
             alt="Pavones, Costa Rica — surf en la jungla"
+            data-i18n-alt="spotPavonesAlt"
             loading="lazy" />
-          <span class="spot-badge">🌴 Jungla</span>
+          <span class="spot-badge">🌴 <span data-i18n="badgeJungle">Jungla</span></span>
         </div>
         <div class="spot-body">
-          <div class="spot-country">🇨🇷 Costa Rica</div>
+          <div class="spot-country">🇨🇷 <span data-i18n="countryCostaRica">Costa Rica</span></div>
           <h3 data-i18n="spotPavonesTitle">Pavones</h3>
           <p data-i18n="spotPavonesDesc">Una de las izquierdas más largas del mundo rodeada de selva tropical.
             Rincón remoto donde la naturaleza y las olas conviven en perfecta armonía.</p>
@@ -151,11 +155,12 @@
         <div class="spot-img-wrap">
           <img src="/assets/img/spot-punta-lobos.jpg"
             alt="Punta de Lobos, Chile — olas poderosas del Pacífico Sur"
+            data-i18n-alt="spotLobosAlt"
             loading="lazy" />
-          <span class="spot-badge">🦁 Potencia</span>
+          <span class="spot-badge">🦁 <span data-i18n="badgePower">Potencia</span></span>
         </div>
         <div class="spot-body">
-          <div class="spot-country">🇨🇱 Chile</div>
+          <div class="spot-country">🇨🇱 <span data-i18n="countryChile">Chile</span></div>
           <h3 data-i18n="spotLobosTitle">Punta de Lobos</h3>
           <p data-i18n="spotLobosDesc">Aguas frías del Pacífico Sur, olas poderosas y un paisaje salvaje.
             Sede de competencias WCT, este spot es para los que buscan el verdadero desafío.</p>
@@ -173,11 +178,12 @@
         <div class="spot-img-wrap">
           <img src="/assets/img/spot-pipa.jpg"
             alt="Praia de Pipa, Brasil — beach break tropical"
+            data-i18n-alt="spotPipaAlt"
             loading="lazy" />
-          <span class="spot-badge">☀️ Tropical</span>
+          <span class="spot-badge">☀️ <span data-i18n="badgeTropical">Tropical</span></span>
         </div>
         <div class="spot-body">
-          <div class="spot-country">🇧🇷 Brasil</div>
+          <div class="spot-country">🇧🇷 <span data-i18n="countryBrazil">Brasil</span></div>
           <h3 data-i18n="spotPipaTitle">Praia de Pipa</h3>
           <p data-i18n="spotPipaDesc">Beach break variado con olas para todos los niveles. Agua cálida todo el año,
             delfines en el lineup y una vibrante cultura de surf y vida nocturna.</p>
@@ -195,11 +201,12 @@
         <div class="spot-img-wrap">
           <img src="/assets/img/spot-palmar.jpg"
             alt="El Palmar, Ecuador — beach break consistente"
+            data-i18n-alt="spotPalmarAlt"
             loading="lazy" />
-          <span class="spot-badge">🌅 Consistente</span>
+          <span class="spot-badge">🌅 <span data-i18n="badgeConsistent">Consistente</span></span>
         </div>
         <div class="spot-body">
-          <div class="spot-country">🇪🇨 Ecuador</div>
+          <div class="spot-country">🇪🇨 <span data-i18n="countryEcuador">Ecuador</span></div>
           <h3 data-i18n="spotPalmarTitle">El Palmar</h3>
           <p data-i18n="spotPalmarDesc">Beach break consistente en la Costa del Pacífico ecuatoriano.
             Aguas cálidas, oleaje regular y una comunidad local amigable. Perfecto para progresar.</p>
@@ -217,11 +224,12 @@
         <div class="spot-img-wrap">
           <img src="/assets/img/spot-puerto-escondido.jpg"
             alt="Puerto Escondido, Oaxaca, México — el Pipeline Mexicano"
+            data-i18n-alt="spotPuertoAlt"
             loading="lazy" />
-          <span class="spot-badge">💀 Pipeline MX</span>
+          <span class="spot-badge">💀 <span data-i18n="badgePipeline">Pipeline MX</span></span>
         </div>
         <div class="spot-body">
-          <div class="spot-country">🇲🇽 México</div>
+          <div class="spot-country">🇲🇽 <span data-i18n="countryMexico">México</span></div>
           <h3 data-i18n="spotPuertoTitle">Puerto Escondido</h3>
           <p data-i18n="spotPuertoDesc">El "Pipeline Mexicano" de Oaxaca: un shore break explosivo de fama mundial.
             Olas huecas y poderosas que rompen en arena, escenario del Mexican Open y
@@ -243,6 +251,7 @@
 <section class="band" id="cultura" style="padding:0;">
   <img class="band-media" src="/assets/img/surf-cultura.jpg"
     alt="Surfista caminando hacia el mar al amanecer en LATAM"
+    data-i18n-alt="cultureImageAlt"
     loading="lazy" />
   <div class="wrap">
     <div class="split">
@@ -352,6 +361,7 @@
 <section class="band" style="padding:0;">
   <img class="band-media" src="/assets/img/surfer-walk.jpg"
     alt="Surfista caminando al amanecer"
+    data-i18n-alt="securityImageAlt"
     loading="lazy" />
   <div class="wrap">
     <div style="max-width:52ch;">
@@ -393,7 +403,7 @@
 </section>
 
 <!-- SE DEMO PANEL (Cloudflare SASE runbook) -->
-<section id="sePanel" aria-label="Cloudflare SASE Demo Runbook"></section>
+<section id="sePanel" aria-label="Cloudflare SASE Demo Runbook" data-i18n-aria-label="demoRunbookLabel"></section>
 
 <!-- FOOTER -->
 <footer>
@@ -410,12 +420,12 @@
       </div>
       <div>
         <h4 data-i18n="footerCol1">Destinos</h4>
-        <a href="#spots">Chicama, Perú</a>
-        <a href="#spots">Pavones, Costa Rica</a>
-        <a href="#spots">Punta de Lobos, Chile</a>
-        <a href="#spots">Pipa, Brasil</a>
-        <a href="#spots">El Palmar, Ecuador</a>
-        <a href="#spots">Puerto Escondido, México</a>
+        <a href="#spots" data-i18n="footerSpotChicama">Chicama, Perú</a>
+        <a href="#spots" data-i18n="footerSpotPavones">Pavones, Costa Rica</a>
+        <a href="#spots" data-i18n="footerSpotLobos">Punta de Lobos, Chile</a>
+        <a href="#spots" data-i18n="footerSpotPipa">Pipa, Brasil</a>
+        <a href="#spots" data-i18n="footerSpotPalmar">El Palmar, Ecuador</a>
+        <a href="#spots" data-i18n="footerSpotPuerto">Puerto Escondido, México</a>
       </div>
       <div>
         <h4 data-i18n="footerCol2">Comunidad</h4>
@@ -426,8 +436,8 @@
       <div>
         <h4 data-i18n="footerCol3">Soporte</h4>
         <a href="mailto:hola@surflatam.dev">hola@surflatam.dev</a>
-        <a href="#">Guía de Seguridad</a>
-        <a href="#">Política de Privacidad</a>
+        <a href="#" data-i18n="securityGuide">Guía de Seguridad</a>
+        <a href="#" data-i18n="privacyPolicy">Política de Privacidad</a>
       </div>
     </div>
     <div class="legal">
@@ -441,15 +451,15 @@
 </footer>
 
 <!-- CHATBOT -->
-<button id="sl-chat-toggle" aria-label="Abrir el asistente SurfLatam">🌊</button>
-<div id="sl-chat-panel" role="dialog" aria-label="Surf Concierge" aria-modal="true">
+<button id="sl-chat-toggle" aria-label="Abrir el asistente SurfLatam" data-i18n-aria-label="chatToggleLabel">🌊</button>
+<div id="sl-chat-panel" role="dialog" aria-label="Asistente SurfLatam" data-i18n-aria-label="chatDialogLabel" aria-modal="true">
   <div class="sl-chat-head">
     <div class="sl-chat-avatar">🏄</div>
     <div>
       <div class="t" data-i18n="chatTitle">Asistente SurfLatam</div>
       <div class="s" data-i18n="chatSub">Spots, temporadas y cultura · Workers AI</div>
     </div>
-    <button class="sl-chat-close" id="sl-chat-close" aria-label="Cerrar chat">✕</button>
+    <button class="sl-chat-close" id="sl-chat-close" aria-label="Cerrar chat" data-i18n-aria-label="chatCloseLabel">✕</button>
   </div>
   <div class="sl-msgs" id="sl-msgs"></div>
   <div class="sl-typing" id="sl-typing" style="display:none;" data-i18n="chatTyping">El concierge está escribiendo…</div>
@@ -462,7 +472,7 @@
       autocomplete="off"
       maxlength="500"
     />
-    <button id="sl-send" aria-label="Enviar mensaje">
+    <button id="sl-send" aria-label="Enviar mensaje" data-i18n-aria-label="chatSendLabel">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </button>
   </div>

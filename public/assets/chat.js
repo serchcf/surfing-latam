@@ -1,5 +1,5 @@
 /* ============================================================
-   SurfLatam Chat — Frontend Logic (Bilingual ES / PT-BR)
+  SurfLatam Chat — Frontend Logic (ES / PT-BR / EN-US)
    Calls /api/chat (Cloudflare Worker) with guardrail awareness
    ============================================================ */
 
@@ -13,6 +13,13 @@
   function getWelcomeMsg() {
     if (window.getTranslation) {
       return window.getTranslation('chatWelcome');
+    }
+    const language = window.getCurrentLanguage ? window.getCurrentLanguage() : 'es';
+    if (language === 'en') {
+      return 'Hey! I can help you explore SurfLatam spots, skill levels, seasons, and Latin American surf culture. Where are you thinking of surfing?';
+    }
+    if (language === 'pt') {
+      return 'Olá! Posso ajudar com os picos da SurfLatam, seus níveis e temporadas, e a cultura do surf latino-americano. Qual destino você procura?';
     }
     return '¡Hola! Puedo ayudarte con los spots de SurfLatam, sus niveles y temporadas, ' +
       'y la cultura del surf latinoamericano. También respondo sobre los servicios Cloudflare ' +
@@ -142,7 +149,11 @@
       if (response.status === 429) {
         const rateLimitMsg = window.getTranslation
           ? window.getTranslation('chatRateLimit')
-          : 'Has alcanzado el límite del chat. Espera un minuto antes de volver a intentarlo.';
+          : currentLang === 'pt'
+            ? 'Limite do chat atingido. Aguarde um minuto e tente novamente.'
+            : currentLang === 'en'
+              ? 'Chat limit reached. Wait a minute, then try again.'
+              : 'Has alcanzado el límite del chat. Espera un minuto antes de volver a intentarlo.';
         appendMsg(rateLimitMsg, 'error');
         history.pop();
         setLoading(false);
@@ -153,7 +164,11 @@
         // Content blocked by guardrails (DLP / topic filter)
         const dlpMsg = window.getTranslation
           ? window.getTranslation('chatBlockedDlp')
-          : '🛡️ Tu mensaje fue bloqueado por las políticas de seguridad de Cloudflare.';
+          : currentLang === 'pt'
+            ? '🛡️ Mensagem bloqueada pelo controle DLP deste chat de demonstração.'
+            : currentLang === 'en'
+              ? '🛡️ Blocked by this demo chat’s DLP control because the message contains sensitive information.'
+              : '🛡️ Mensaje bloqueado por el control DLP de este chat de demostración.';
         appendMsg(dlpMsg, 'blocked');
         history.pop(); // Remove from history since it was blocked
         setLoading(false);
@@ -180,9 +195,9 @@
     } catch (err) {
       setTyping(false);
       console.error('[SurfLatam Chat]', err);
-      const connErrMsg = currentLang === 'pt'
-        ? '🌊 Ocorreu um problema ao conectar com o servidor. Tente novamente.'
-        : '🌊 Hubo un problema al conectar con el servidor. Intenta de nuevo.';
+      const connErrMsg = window.getTranslation
+        ? window.getTranslation('chatConnectionError')
+        : '🌊 Could not connect to the assistant. Please try again.';
       appendMsg(connErrMsg, 'error');
     } finally {
       setLoading(false);

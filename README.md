@@ -13,6 +13,7 @@ Un sitio web de surf enfocado en spots de Latinoamérica. Su asistente responde 
 |---|---|
 | **Cloudflare Workers** | Worker `surfing-latam` sirve el sitio y sus rutas API |
 | **Workers Static Assets** | Publica HTML, CSS, JS e imágenes desde `public/` |
+| **Idiomas** | Español, portugués brasileño e inglés de Estados Unidos (EN-US) |
 | **Pages Functions** | Implementación alternativa del endpoint del chat si se despliega como Pages |
 | **Workers AI** | Modelo Llama 3.1 8B Fast para el asistente de SurfLatam |
 | **AI Gateway** | Integración opcional para enrutar llamadas a Workers AI, con logging/caching si se configura |

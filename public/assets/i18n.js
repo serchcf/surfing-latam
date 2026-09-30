@@ -1,5 +1,5 @@
 /* ============================================================
-   SurfLatam — i18n Internationalization Engine (ES / PT-BR)
+  SurfLatam — i18n Internationalization Engine (ES / PT-BR / EN-US)
    Detects Cloudflare edge geolocation (Brazil -> PT-BR)
    Provides manual language toggle with localStorage persistence
    ============================================================ */
@@ -12,9 +12,18 @@
       langCode: 'es',
       metaTitle: 'SurfLatam — Los Mejores Spots de Surf en América Latina',
       metaDesc: 'Descubre los mejores spots de surf en Latinoamérica: Puerto Escondido, Chicama, Pavones, Punta de Lobos, Pipa y más. Tu guía definitiva del surf en LATAM.',
+      oceanImageAlt: 'Océano Pacífico visto desde la costa latinoamericana',
+      spotChicamaAlt: 'Chicama, Perú — la izquierda más larga del mundo',
+      spotPavonesAlt: 'Pavones, Costa Rica — surf en la jungla',
+      spotLobosAlt: 'Punta de Lobos, Chile — olas poderosas del Pacífico Sur',
+      spotPipaAlt: 'Praia de Pipa, Brasil — beach break tropical',
+      spotPalmarAlt: 'El Palmar, Ecuador — beach break consistente',
+      spotPuertoAlt: 'Puerto Escondido, Oaxaca, México — el Pipeline Mexicano',
+      cultureImageAlt: 'Surfista caminando hacia el mar al amanecer en LATAM',
+      securityImageAlt: 'Surfista caminando al amanecer',
       
       // Banner
-      banner1: 'SurfLatam — Cloudflare Zero Trust Demo Environment',
+      banner1: 'SurfLatam — Entorno de demostración Cloudflare Zero Trust',
       banner2: '· SASE · ZTNA · AI Gateway · DLP · Zero Trust Access ·',
       
       // Nav
@@ -24,6 +33,13 @@
       navExplora: 'Explorar',
       navLogin: 'Employee Login',
       navDiscover: 'Descubrir',
+      navToggleLabel: 'Abrir menú',
+      languageSelectorLabel: 'Seleccionar idioma',
+      chatToggleLabel: 'Abrir el asistente SurfLatam',
+      chatDialogLabel: 'Asistente SurfLatam',
+      chatCloseLabel: 'Cerrar chat',
+      chatSendLabel: 'Enviar mensaje',
+      demoRunbookLabel: 'Guía de demostración Cloudflare SASE',
       
       // Hero
       heroEyebrow: 'América Latina · Surf Culture',
@@ -56,6 +72,18 @@
       spotPalmarDesc: 'Beach break consistente en la Costa del Pacífico ecuatoriano. Aguas cálidas, oleaje regular y una comunidad local amigable. Perfecto para progresar.',
       spotPuertoTitle: 'Puerto Escondido',
       spotPuertoDesc: 'El "Pipeline Mexicano" de Oaxaca: un shore break explosivo de fama mundial. Olas huecas y poderosas que rompen en arena, escenario del Mexican Open y destino de los mejores big wave surfers del planeta.',
+      countryPeru: 'Perú',
+      countryCostaRica: 'Costa Rica',
+      countryChile: 'Chile',
+      countryBrazil: 'Brasil',
+      countryEcuador: 'Ecuador',
+      countryMexico: 'México',
+      badgeLegendary: 'Legendario',
+      badgeJungle: 'Jungla',
+      badgePower: 'Potencia',
+      badgeTropical: 'Tropical',
+      badgeConsistent: 'Consistente',
+      badgePipeline: 'Pipeline MX',
       
       // Spot tags & badges
       tagLeft: 'Izquierda',
@@ -119,6 +147,14 @@
       footerCol1: 'Destinos',
       footerCol2: 'Comunidad',
       footerCol3: 'Soporte',
+      footerSpotChicama: 'Chicama, Perú',
+      footerSpotPavones: 'Pavones, Costa Rica',
+      footerSpotLobos: 'Punta de Lobos, Chile',
+      footerSpotPipa: 'Pipa, Brasil',
+      footerSpotPalmar: 'El Palmar, Ecuador',
+      footerSpotPuerto: 'Puerto Escondido, México',
+      securityGuide: 'Guía de seguridad',
+      privacyPolicy: 'Política de privacidad',
       footerLegal1: '© 2026 SurfLatam. Un entorno demo de Cloudflare Zero Trust — empresa ficticia, no un producto real.',
       footerLegal2: 'Encuentra tu ola. 🌊',
       footerDisclaimer: 'SurfLatam es un entorno demo ficticio. El chat usa Workers AI, un filtro DLP implementado en la aplicación y una integración opcional con AI Gateway. Access y Gateway (SWG) requieren políticas configuradas por separado en Cloudflare.',
@@ -132,6 +168,7 @@
       chatBlockedDlp: '🛡️ Bloqueado por el control DLP de este chat de demostración: contiene datos sensibles (tarjetas, credenciales o PII).',
       chatBlockedTopic: 'Puedo ayudarte con los spots, niveles, temporadas y cultura del surf en SurfLatam, además de los servicios Cloudflare que explica el sitio.',
       chatRateLimit: '⏳ Límite del chat alcanzado. Espera un minuto e inténtalo de nuevo.',
+      chatConnectionError: '🌊 No se pudo conectar con el asistente. Inténtalo de nuevo.',
       chatFooter: 'SurfLatam · DLP · 5 solicitudes/min'
     },
     
@@ -139,9 +176,18 @@
       langCode: 'pt',
       metaTitle: 'SurfLatam — Os Melhores Picos de Surf na América Latina',
       metaDesc: 'Descubra os melhores picos de surf na América Latina: Puerto Escondido, Chicama, Pavones, Punta de Lobos, Praia de Pipa e mais. Seu guia definitivo de surf na LATAM.',
+      oceanImageAlt: 'Oceano Pacífico visto do litoral latino-americano',
+      spotChicamaAlt: 'Chicama, Peru — a esquerda mais longa do mundo',
+      spotPavonesAlt: 'Pavones, Costa Rica — surf na selva',
+      spotLobosAlt: 'Punta de Lobos, Chile — ondas poderosas do Pacífico Sul',
+      spotPipaAlt: 'Praia de Pipa, Brasil — beach break tropical',
+      spotPalmarAlt: 'El Palmar, Equador — beach break consistente',
+      spotPuertoAlt: 'Puerto Escondido, Oaxaca, México — o Pipeline Mexicano',
+      cultureImageAlt: 'Surfista caminhando em direção ao mar ao amanhecer na América Latina',
+      securityImageAlt: 'Surfista caminhando ao amanhecer',
       
       // Banner
-      banner1: 'SurfLatam — Ambiente de Demonstração Cloudflare Zero Trust',
+      banner1: 'SurfLatam — Ambiente de demonstração Cloudflare Zero Trust',
       banner2: '· SASE · ZTNA · AI Gateway · DLP · Zero Trust Access ·',
       
       // Nav
@@ -151,6 +197,13 @@
       navExplora: 'Explorar',
       navLogin: 'Login de Equipe',
       navDiscover: 'Descobrir',
+      navToggleLabel: 'Abrir menu',
+      languageSelectorLabel: 'Selecionar idioma',
+      chatToggleLabel: 'Abrir o assistente SurfLatam',
+      chatDialogLabel: 'Assistente SurfLatam',
+      chatCloseLabel: 'Fechar chat',
+      chatSendLabel: 'Enviar mensagem',
+      demoRunbookLabel: 'Guia de demonstração Cloudflare SASE',
       
       // Hero
       heroEyebrow: 'América Latina · Cultura do Surf',
@@ -183,6 +236,18 @@
       spotPalmarDesc: 'Beach break consistente no litoral do Pacífico equatoriano. Águas mornas, ondulação constante e uma comunidade local muito receptiva. Perfeito para evoluir.',
       spotPuertoTitle: 'Puerto Escondido',
       spotPuertoDesc: 'O "Pipeline Mexicano" de Oaxaca: um shore break explosivo de renome mundial. Ondas tubulares e cavadas que quebram na areia, palco do Mexican Open e destino dos maiores big riders do planeta.',
+      countryPeru: 'Peru',
+      countryCostaRica: 'Costa Rica',
+      countryChile: 'Chile',
+      countryBrazil: 'Brasil',
+      countryEcuador: 'Equador',
+      countryMexico: 'México',
+      badgeLegendary: 'Lendário',
+      badgeJungle: 'Selva',
+      badgePower: 'Potência',
+      badgeTropical: 'Tropical',
+      badgeConsistent: 'Consistente',
+      badgePipeline: 'Pipeline MX',
       
       // Spot tags & badges
       tagLeft: 'Esquerda',
@@ -246,6 +311,14 @@
       footerCol1: 'Destinos',
       footerCol2: 'Comunidade',
       footerCol3: 'Suporte',
+      footerSpotChicama: 'Chicama, Peru',
+      footerSpotPavones: 'Pavones, Costa Rica',
+      footerSpotLobos: 'Punta de Lobos, Chile',
+      footerSpotPipa: 'Pipa, Brasil',
+      footerSpotPalmar: 'El Palmar, Equador',
+      footerSpotPuerto: 'Puerto Escondido, México',
+      securityGuide: 'Guia de segurança',
+      privacyPolicy: 'Política de privacidade',
       footerLegal1: '© 2026 SurfLatam. Ambiente demo da Cloudflare Zero Trust — empresa fictícia para demonstração.',
       footerLegal2: 'Encontre a sua onda. 🌊',
       footerDisclaimer: 'SurfLatam é uma demonstração fictícia. O chat usa Workers AI, um filtro DLP implementado na aplicação e integração opcional com AI Gateway. Access e Gateway (SWG) exigem políticas configuradas separadamente na Cloudflare.',
@@ -259,7 +332,144 @@
       chatBlockedDlp: '🛡️ Bloqueada pelo controle DLP deste chat de demonstração: contém dados confidenciais (cartões, credenciais ou PII).',
       chatBlockedTopic: 'Posso ajudar com os picos, níveis, temporadas e cultura do surf na SurfLatam, além dos serviços Cloudflare explicados no site.',
       chatRateLimit: '⏳ Limite do chat atingido. Aguarde um minuto e tente novamente.',
+      chatConnectionError: '🌊 Não foi possível conectar ao assistente. Tente novamente.',
       chatFooter: 'SurfLatam · DLP · 5 solicitações/min'
+    },
+
+    en: {
+      langCode: 'en-US',
+      metaTitle: 'SurfLatam — Latin America Surf Spots',
+      metaDesc: 'Explore surf spots across Latin America, from Chicama and Pavones to Punta de Lobos, Pipa, El Palmar, and Puerto Escondido.',
+      banner1: 'SurfLatam — Cloudflare Zero Trust Demo Environment',
+      banner2: '· SASE · ZTNA · AI Gateway · DLP · Zero Trust Access ·',
+      navSpots: 'Surf Spots',
+      navCultura: 'Culture',
+      navHistorias: 'Stories',
+      navExplora: 'Explore',
+      navLogin: 'Employee Login',
+      navDiscover: 'Discover',
+      navToggleLabel: 'Open menu',
+      languageSelectorLabel: 'Select language',
+      chatToggleLabel: 'Open the SurfLatam assistant',
+      chatDialogLabel: 'SurfLatam assistant',
+      chatCloseLabel: 'Close chat',
+      chatSendLabel: 'Send message',
+      demoRunbookLabel: 'Cloudflare SASE demo runbook',
+      heroEyebrow: 'Latin America · Surf Culture',
+      heroH1: 'Find your <span class="highlight">wave.</span>',
+      heroLead: 'From the world’s longest waves in Chicama to the power of Punta de Lobos, Latin America is home to some of the best surf spots on the planet. We’ll help you find yours.',
+      heroCta1: 'Explore the Spots',
+      heroCta2: 'Surf Culture',
+      heroReassure: '6 countries · 15+ spots · Surf all year · Local community',
+      misionEyebrow: 'Our mission',
+      misionH2: 'The ocean has no borders.',
+      misionLead: 'From Mexico to Patagonia, the Pacific and Atlantic coastlines hold some of the most perfect waves on the planet. This is the guide you’ve been looking for.',
+      spotsEyebrow: 'Top surf spots',
+      spotsH2: 'Six countries. A lifetime of waves.',
+      spotsLead: 'Selected by local communities and checked by professional surfers. Every spot has its own character—find the one that fits you.',
+      spotChicamaTitle: 'Chicama',
+      spotChicamaDesc: 'The world’s longest left: more than 4 km (2.5 miles) of continuous wave. An epic point break every surfer should experience at least once.',
+      spotPavonesTitle: 'Pavones',
+      spotPavonesDesc: 'One of the world’s longest lefts, surrounded by tropical rainforest. A remote corner where nature and waves come together.',
+      spotLobosTitle: 'Punta de Lobos',
+      spotLobosDesc: 'Cold South Pacific water, powerful waves, and a rugged landscape. A WCT competition venue for surfers looking for a real challenge.',
+      spotPipaTitle: 'Praia de Pipa',
+      spotPipaDesc: 'A varied beach break with waves for every level. Warm water year-round, dolphins in the lineup, and a lively surf and nightlife scene.',
+      spotPalmarTitle: 'El Palmar',
+      spotPalmarDesc: 'A consistent beach break on Ecuador’s Pacific coast. Warm water, regular swell, and a welcoming local community make it a great place to progress.',
+      spotPuertoTitle: 'Puerto Escondido',
+      spotPuertoDesc: 'Oaxaca’s “Mexican Pipeline”: a world-famous, powerful shore break with hollow waves breaking over sand. It hosts the Mexican Open and draws top big-wave surfers.',
+      countryPeru: 'Peru',
+      countryCostaRica: 'Costa Rica',
+      countryChile: 'Chile',
+      countryBrazil: 'Brazil',
+      countryEcuador: 'Ecuador',
+      countryMexico: 'Mexico',
+      badgeLegendary: 'Legendary',
+      badgeJungle: 'Rainforest',
+      badgePower: 'Power',
+      badgeTropical: 'Tropical',
+      badgeConsistent: 'Consistent',
+      badgePipeline: 'Mexican Pipeline',
+      tagLeft: 'Left',
+      tagPoint: 'Point break',
+      tagBeach: 'Beach break',
+      tagBoth: 'Both directions',
+      tagAllYear: 'Year-round',
+      tagAdvanced: 'Advanced',
+      tagIntermediate: 'Intermediate',
+      tagBeginner: 'Beginner',
+      culturaEyebrow: 'Surf culture',
+      culturaH2: 'More than a board.<br>A way of life.',
+      culturaLead: 'Surfing in Latin America is more than a sport. It’s the sunrise paddle, respect for the ocean, and the community that forms in the lineup. Every country has its own identity, rhythm, and wave.',
+      culturaMuted: 'From the Chicama fishermen who turned their boats into boards to Chilean and Brazilian pros on the world tour, Latin American surfing has history, soul, and a future.',
+      culturaFieldnote: '“The lineup at Pavones is like a language without words. Everyone knows when it’s your turn, and everyone looks out for one another. It’s the best kind of communication.”',
+      culturaAuthor: '— Rodrigo M., surfer · Jacó, Costa Rica',
+      stat1Lbl: 'Destinations',
+      stat2Lbl: 'Covered',
+      stat3Lbl: 'Surf season',
+      stat4Lbl: 'Longest wave',
+      stat5Lbl: 'Memories',
+      stat1Sub: ' countries',
+      stat2Sub: '+ spots',
+      stat3Sub: ' months',
+      stat4Sub: ' km',
+      historiasEyebrow: 'Surfer stories',
+      historiasH2: 'The ocean changes people.',
+      historiasLead: 'Stories from surfers who found their wave in Latin America.',
+      story1: '“I arrived in Chicama without knowing what to expect. I stayed three weeks. The wave pulls you in, the community makes you stay. I’ve been back five times.”',
+      story1Role: 'Surfer · Mexico City, Mexico',
+      story2: '“Punta de Lobos taught me respect. The cold water, the rocks, the power. I left a different surfer—more humble, stronger.”',
+      story2Role: 'Pro surfer · Santiago, Chile',
+      story3: '“I started in Pipa because the water was warm and it felt less intimidating. Now I’m a surf instructor. That first day changed everything.”',
+      story3Role: 'Surf instructor · Natal, Brazil',
+      cfEyebrow: 'Powered by Cloudflare',
+      cfH2: 'Security without compromise.',
+      cfLead: 'SurfLatam showcases Cloudflare services including Pages, Workers AI, Access, and Gateway. Network and identity controls require active policies in your account.',
+      cfPt1T: 'Cloudflare Pages',
+      cfPt1D: 'Global hosting with an automatic CDN and low latency across Latin America.',
+      cfPt2T: 'Cloudflare Gateway (SWG) + DLP',
+      cfPt2D: 'DNS and HTTP filtering and DLP controls depend on configured Cloudflare policies and traffic routes.',
+      cfPt3T: 'Zero Trust Access',
+      cfPt3D: 'Can protect applications with identity-based policies. Requires an application and rules configured in Cloudflare Access.',
+      ctaEyebrow: 'Your Latin America surf guide',
+      ctaH2: 'Find your next spot.',
+      ctaLead: 'Ask the assistant about destinations, skill levels, seasons, and surf culture across Latin America.',
+      ctaBtn: 'Ask the assistant',
+      footerDesc: 'Your guide to surfing in Latin America. Powered by Cloudflare SASE & Zero Trust.',
+      footerCol1: 'Destinations',
+      footerCol2: 'Community',
+      footerCol3: 'Support',
+      footerSpotChicama: 'Chicama, Peru',
+      footerSpotPavones: 'Pavones, Costa Rica',
+      footerSpotLobos: 'Punta de Lobos, Chile',
+      footerSpotPipa: 'Pipa, Brazil',
+      footerSpotPalmar: 'El Palmar, Ecuador',
+      footerSpotPuerto: 'Puerto Escondido, Mexico',
+      securityGuide: 'Security guide',
+      privacyPolicy: 'Privacy policy',
+      footerLegal1: '© 2026 SurfLatam. A fictional Cloudflare Zero Trust demo environment, not a real product or business.',
+      footerLegal2: 'Find your wave. 🌊',
+      footerDisclaimer: 'SurfLatam is a fictional demo. The chat uses Workers AI, an application-level DLP filter, and optional AI Gateway integration. Access and Gateway (SWG) require separate Cloudflare policies.',
+      chatTitle: 'SurfLatam Assistant',
+      chatSub: 'Spots, seasons & culture · Workers AI',
+      chatPlaceholder: 'Ask about spots, skill levels, or seasons…',
+      chatTyping: 'The assistant is responding…',
+      chatWelcome: 'Hey! I can help you explore SurfLatam’s spots, skill levels, seasons, and Latin American surf culture. I can also explain the Cloudflare services featured on the site. Where are you thinking of surfing?',
+      chatBlockedDlp: '🛡️ Blocked by this demo chat’s DLP control: the message contains sensitive data such as card numbers, credentials, or personal information.',
+      chatBlockedTopic: 'I can help with SurfLatam spots, skill levels, seasons, surf culture, and the Cloudflare services described on the site.',
+      chatRateLimit: '⏳ Chat limit reached. Wait a minute, then try again.',
+      chatConnectionError: '🌊 Could not connect to the assistant. Please try again.',
+      chatFooter: 'SurfLatam · DLP · 5 requests/min',
+      oceanImageAlt: 'Pacific Ocean along the coast of Latin America',
+      spotChicamaAlt: 'Chicama, Peru, home to the world’s longest left-hand wave',
+      spotPavonesAlt: 'Pavones, Costa Rica, surf break surrounded by rainforest',
+      spotLobosAlt: 'Punta de Lobos, Chile, with powerful South Pacific waves',
+      spotPipaAlt: 'Praia de Pipa, Brazil, tropical beach break',
+      spotPalmarAlt: 'El Palmar, Ecuador, a consistent beach break',
+      spotPuertoAlt: 'Puerto Escondido, Oaxaca, Mexico, known as the Mexican Pipeline',
+      cultureImageAlt: 'Surfer walking toward the ocean at sunrise in Latin America',
+      securityImageAlt: 'Surfer walking toward the ocean at sunrise'
     }
   };
 
@@ -296,6 +506,16 @@
       }
     });
 
+    document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (t[key] !== undefined) el.setAttribute('alt', t[key]);
+    });
+
     // Update active button state
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       const btnLang = btn.getAttribute('data-lang');
@@ -318,7 +538,7 @@
   async function detectInitialLanguage() {
     // 1. Explicit user choice in localStorage takes priority
     const saved = localStorage.getItem('surflatam_lang');
-    if (saved === 'es' || saved === 'pt') {
+    if (saved === 'es' || saved === 'pt' || saved === 'en') {
       applyTranslations(saved);
       return;
     }
@@ -327,6 +547,10 @@
     const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
     if (browserLang.startsWith('pt')) {
       applyTranslations('pt');
+      return;
+    }
+    if (browserLang.startsWith('en')) {
+      applyTranslations('en');
       return;
     }
 
