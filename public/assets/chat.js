@@ -14,9 +14,9 @@
     if (window.getTranslation) {
       return window.getTranslation('chatWelcome');
     }
-    return 'Hola. Puedo explicarte los servicios Cloudflare de este demo: ' +
-      'Zero Trust Access (ZTNA), Gateway (SWG), DLP, Pages, Workers AI y AI Gateway. ' +
-      'También puedo distinguir qué está implementado aquí y qué requiere configuración en Cloudflare.';
+    return '¡Hola! Puedo ayudarte con los spots de SurfLatam, sus niveles y temporadas, ' +
+      'y la cultura del surf latinoamericano. También respondo sobre los servicios Cloudflare ' +
+      'que muestra el sitio. ¿Qué destino tienes en mente?';
   }
 
   /* ── State ── */

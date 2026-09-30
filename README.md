@@ -3,7 +3,7 @@
 > **Entorno demo ficticio** creado para demostrar soluciones Cloudflare SASE y Zero Trust (ZTNA).
 > No es una empresa ni producto real.
 
-Un sitio web de surf enfocado en los mejores spots de Latinoamérica, con un chatbot de IA protegido por múltiples capas de seguridad Cloudflare.
+Un sitio web de surf enfocado en spots de Latinoamérica. Su asistente responde sobre los destinos, niveles, temporadas y cultura publicados en el sitio, y demuestra DLP y rate limiting en el chat.
 
 ---
 
@@ -14,9 +14,9 @@ Un sitio web de surf enfocado en los mejores spots de Latinoamérica, con un cha
 | **Cloudflare Workers** | Worker `surfing-latam` sirve el sitio y sus rutas API |
 | **Workers Static Assets** | Publica HTML, CSS, JS e imágenes desde `public/` |
 | **Pages Functions** | Implementación alternativa del endpoint del chat si se despliega como Pages |
-| **Workers AI** | Modelo Llama 3.1 8B Fast para el asistente de servicios |
+| **Workers AI** | Modelo Llama 3.1 8B Fast para el asistente de SurfLatam |
 | **AI Gateway** | Integración opcional para enrutar llamadas a Workers AI, con logging/caching si se configura |
-| **Guardrails del chatbot** | DLP en el chat y filtro de alcance a servicios Cloudflare |
+| **Guardrails del chatbot** | DLP en el chat y filtro de alcance a contenido de SurfLatam y sus servicios Cloudflare |
 | **Workers Rate Limiting** | Límite de 5 solicitudes/minuto por IP en el Worker de chat |
 | **Cloudflare Access (ZTNA)** | Requiere crear una aplicación y políticas de acceso en el dashboard |
 | **Cloudflare Gateway (SWG)** | Requiere políticas Gateway y enrutar tráfico de prueba con WARP u otro método compatible |
@@ -184,13 +184,13 @@ Bloquea mensajes que contengan:
 - Números de seguridad social
 
 ### Filtro de alcance
-El chat responde sobre los servicios Cloudflare presentados en este demo: Pages, Workers AI, AI Gateway, DLP, Zero Trust Access y Gateway/SWG.
+El asistente responde sobre los seis spots descritos en el sitio, sus países, niveles y temporadas, la cultura e historias de surf, y los servicios Cloudflare presentados en el demo. No proporciona pronósticos de oleaje en vivo.
 
 ### AI Gateway
 El Worker intenta enrutar las solicitudes por el gateway `surflatam-ai-gateway`; si falla, usa Workers AI directamente. Logging y caché dependen de la configuración del gateway. El rate limit del chat es un binding independiente.
 
 ### Filtro de respuesta
-Rechaza respuestas que no mencionen los servicios permitidos. Es un filtro simple por palabras clave, no una garantía semántica.
+Rechaza respuestas que no mencionen contenido del sitio o sus servicios. Es un filtro simple por palabras clave, no una garantía semántica.
 
 ## 🔐 Requisitos para demostrar Access y SWG
 

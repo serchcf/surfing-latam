@@ -109,10 +109,10 @@
       cfPt3D: 'Puede proteger aplicaciones por identidad y políticas. Requiere configurar una aplicación y reglas en Cloudflare Access.',
       
       // CTA
-      ctaEyebrow: 'Cloudflare SASE demo',
-      ctaH2: 'Explora los controles de seguridad.',
-      ctaLead: 'Consulta al asistente sobre Zero Trust Access, SWG, DLP y los servicios Cloudflare que mostramos en este demo.',
-      ctaBtn: 'Consultar asistente Cloudflare',
+      ctaEyebrow: 'Tu guía de surf en LATAM',
+      ctaH2: 'Encuentra tu próximo spot.',
+      ctaLead: 'Pregunta al asistente por destinos, niveles, temporadas y cultura del surf en Latinoamérica.',
+      ctaBtn: 'Preguntar al asistente',
       
       // Footer
       footerDesc: 'Tu guía definitiva del surf en América Latina. Powered by Cloudflare SASE & Zero Trust.',
@@ -124,15 +124,15 @@
       footerDisclaimer: 'SurfLatam es un entorno demo ficticio. El chat usa Workers AI, un filtro DLP implementado en la aplicación y una integración opcional con AI Gateway. Access y Gateway (SWG) requieren políticas configuradas por separado en Cloudflare.',
       
       // Chatbot
-      chatTitle: 'Asistente Cloudflare',
-      chatSub: 'Demo SurfLatam · Workers AI',
-      chatPlaceholder: 'Pregunta sobre ZTNA, SWG o DLP…',
+      chatTitle: 'Asistente SurfLatam',
+      chatSub: 'Spots, temporadas y cultura · Workers AI',
+      chatPlaceholder: 'Pregunta por spots, niveles o temporadas…',
       chatTyping: 'El asistente está respondiendo…',
-      chatWelcome: 'Hola. Puedo explicarte los servicios Cloudflare de este demo: Zero Trust Access (ZTNA), Gateway (SWG), DLP, Pages, Workers AI y AI Gateway. También puedo distinguir qué está implementado aquí y qué requiere configuración en Cloudflare.',
+      chatWelcome: '¡Hola! Puedo ayudarte con los spots de SurfLatam, sus niveles y temporadas, y la cultura del surf latinoamericano. También respondo sobre los servicios Cloudflare que muestra el sitio. ¿Qué destino tienes en mente?',
       chatBlockedDlp: '🛡️ Bloqueado por el control DLP de este chat de demostración: contiene datos sensibles (tarjetas, credenciales o PII).',
-      chatBlockedTopic: 'Solo puedo informar sobre los servicios Cloudflare de este demo: Zero Trust Access (ZTNA), SWG, DLP, Pages, Workers AI y AI Gateway.',
+      chatBlockedTopic: 'Puedo ayudarte con los spots, niveles, temporadas y cultura del surf en SurfLatam, además de los servicios Cloudflare que explica el sitio.',
       chatRateLimit: '⏳ Límite del chat alcanzado. Espera un minuto e inténtalo de nuevo.',
-      chatFooter: 'Workers AI · DLP · 5 solicitudes/min'
+      chatFooter: 'SurfLatam · DLP · 5 solicitudes/min'
     },
     
     pt: {
@@ -236,10 +236,10 @@
       cfPt3D: 'Pode proteger aplicações por identidade e políticas. Requer configurar uma aplicação e regras no Cloudflare Access.',
       
       // CTA
-      ctaEyebrow: 'Demo Cloudflare SASE',
-      ctaH2: 'Explore os controles de segurança.',
-      ctaLead: 'Consulte o assistente sobre Zero Trust Access, SWG, DLP e os serviços Cloudflare apresentados nesta demonstração.',
-      ctaBtn: 'Consultar assistente Cloudflare',
+      ctaEyebrow: 'Seu guia de surf na América Latina',
+      ctaH2: 'Encontre seu próximo pico.',
+      ctaLead: 'Pergunte ao assistente sobre destinos, níveis, temporadas e cultura do surf na América Latina.',
+      ctaBtn: 'Perguntar ao assistente',
       
       // Footer
       footerDesc: 'Seu guia definitivo de surf na América Latina. Powered by Cloudflare SASE & Zero Trust.',
@@ -251,15 +251,15 @@
       footerDisclaimer: 'SurfLatam é uma demonstração fictícia. O chat usa Workers AI, um filtro DLP implementado na aplicação e integração opcional com AI Gateway. Access e Gateway (SWG) exigem políticas configuradas separadamente na Cloudflare.',
       
       // Chatbot
-      chatTitle: 'Assistente Cloudflare',
-      chatSub: 'Demo SurfLatam · Workers AI',
-      chatPlaceholder: 'Pergunte sobre ZTNA, SWG ou DLP…',
+      chatTitle: 'Assistente SurfLatam',
+      chatSub: 'Picos, temporadas e cultura · Workers AI',
+      chatPlaceholder: 'Pergunte sobre picos, níveis ou temporadas…',
       chatTyping: 'O assistente está respondendo…',
-      chatWelcome: 'Olá. Posso explicar os serviços Cloudflare desta demonstração: Zero Trust Access (ZTNA), Gateway (SWG), DLP, Pages, Workers AI e AI Gateway. Também posso diferenciar o que está implementado aqui do que requer configuração na Cloudflare.',
+      chatWelcome: 'Olá! Posso ajudar com os picos da SurfLatam, seus níveis e temporadas, e a cultura do surf latino-americano. Também respondo sobre os serviços Cloudflare apresentados no site. Qual destino você procura?',
       chatBlockedDlp: '🛡️ Bloqueada pelo controle DLP deste chat de demonstração: contém dados confidenciais (cartões, credenciais ou PII).',
-      chatBlockedTopic: 'Só posso informar sobre os serviços Cloudflare desta demonstração: Zero Trust Access (ZTNA), SWG, DLP, Pages, Workers AI e AI Gateway.',
+      chatBlockedTopic: 'Posso ajudar com os picos, níveis, temporadas e cultura do surf na SurfLatam, além dos serviços Cloudflare explicados no site.',
       chatRateLimit: '⏳ Limite do chat atingido. Aguarde um minuto e tente novamente.',
-      chatFooter: 'Workers AI · DLP · 5 solicitações/min'
+      chatFooter: 'SurfLatam · DLP · 5 solicitações/min'
     }
   };
 
