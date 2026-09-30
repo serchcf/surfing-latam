@@ -11,15 +11,17 @@ Un sitio web de surf enfocado en los mejores spots de Latinoamérica, con un cha
 
 | Solución Cloudflare | Uso en este demo |
 |---|---|
-| **Cloudflare Pages** | Hosting del sitio estático con CDN global |
-| **Pages Functions** | API del chatbot (`/api/chat`) serverless |
-| **Workers AI** | Modelo Llama 3.1 8B para el chatbot de surf |
+| **Cloudflare Workers** | Worker `surfing-latam` sirve el sitio y sus rutas API |
+| **Workers Static Assets** | Publica HTML, CSS, JS e imágenes desde `public/` |
+| **Pages Functions** | Implementación alternativa del endpoint del chat si se despliega como Pages |
+| **Workers AI** | Modelo Llama 3.1 8B Fast para el asistente de servicios |
 | **AI Gateway** | Integración opcional para enrutar llamadas a Workers AI, con logging/caching si se configura |
-| **Guardrails del chatbot** | DLP y filtro de alcance ejecutados en la Pages Function |
+| **Guardrails del chatbot** | DLP en el chat y filtro de alcance a servicios Cloudflare |
+| **Workers Rate Limiting** | Límite de 5 solicitudes/minuto por IP en el Worker de chat |
 | **Cloudflare Access (ZTNA)** | Requiere crear una aplicación y políticas de acceso en el dashboard |
 | **Cloudflare Gateway (SWG)** | Requiere políticas Gateway y enrutar tráfico de prueba con WARP u otro método compatible |
 | **Security Headers** | CSP, HSTS, X-Frame-Options via `_headers` |
-| **GitHub Actions CI/CD** | Deploy automático a Pages en cada push a `main` |
+| **GitHub Actions CI/CD** | `wrangler deploy` automático en cada push a `main` |
 
 ---
 
@@ -109,33 +111,18 @@ En tu proyecto de Pages:
 
 ---
 
-### 4. Configurar Cloudflare AI Gateway
-
-1. Dashboard → **AI** → **AI Gateway**
-2. Clic en **Create Gateway**
-3. Nombre: `surflatam-ai-gateway`
-4. Configurar:
-   - ✅ **Rate limiting**: 20 requests/min
-   - ✅ **Caching**: Enable (TTL: 3600s)
-   - ✅ **Logging**: Enable (para auditoría SASE)
-5. Copiar el Gateway ID y asegurarte de que coincide con el código en `functions/api/chat.js`
-
----
-
+### 2. Configurar Cloudflare Workers
 ### 5. Configurar GitHub Actions (CI/CD)
 
-Añadir estos **Secrets** en tu repositorio GitHub:
-(`Settings` → `Secrets and variables` → `Actions` → `New repository secret`)
-
+npx wrangler login
+npx wrangler deploy
 | Secret | Dónde obtenerlo |
 |--------|-----------------|
-| `CLOUDFLARE_ACCOUNT_ID` | Dashboard → lado izquierdo, Account ID |
+El archivo `wrangler.toml` configura los assets estáticos, el binding `AI` y el rate limit del chat.
+
+### 3. Configurar GitHub Actions
 | `CLOUDFLARE_API_TOKEN` | Profile → API Tokens → Create Token → "Edit Cloudflare Workers" template |
-
-Una vez configurados, cada push a `main` desplegará automáticamente.
-
----
-
+Configura `CLOUDFLARE_ACCOUNT_ID` y `CLOUDFLARE_API_TOKEN` como Actions secrets. El token debe tener permiso para desplegar Workers y acceder a Workers AI.
 ### 6. Configurar Cloudflare Zero Trust (ZTNA) — Employee Login
 
 Para proteger rutas internas con Zero Trust Access:
@@ -183,10 +170,10 @@ Agregar imágenes en `public/assets/img/` con estos nombres:
 
 ## 🛡️ Guardrails del Chatbot
 
-La Pages Function aplica controles al contenido enviado al chat. No son políticas SWG de red:
+El Worker de producción aplica controles al contenido enviado al chat. No son políticas SWG de red:
 
 ```
-Usuario → [DLP de la aplicación] → [Filtro de alcance] → [AI Gateway opcional] → [Workers AI] → [Filtro de respuesta] → Respuesta
+Usuario → [Rate limit: 5/min/IP] → [DLP del chat] → [Filtro de alcance] → [AI Gateway opcional] → [Workers AI] → [Filtro de respuesta] → Respuesta
 ```
 
 ### Capa 1: DLP (Data Loss Prevention)
@@ -200,14 +187,14 @@ Bloquea mensajes que contengan:
 El chat responde sobre los servicios Cloudflare presentados en este demo: Pages, Workers AI, AI Gateway, DLP, Zero Trust Access y Gateway/SWG.
 
 ### AI Gateway
-La Pages Function intenta enrutar las solicitudes por el gateway `surflatam-ai-gateway`; si falla, usa Workers AI directamente. Logging, caché y rate limiting dependen de la configuración del gateway.
+El Worker intenta enrutar las solicitudes por el gateway `surflatam-ai-gateway`; si falla, usa Workers AI directamente. Logging y caché dependen de la configuración del gateway. El rate limit del chat es un binding independiente.
 
 ### Filtro de respuesta
 Rechaza respuestas que no mencionen los servicios permitidos. Es un filtro simple por palabras clave, no una garantía semántica.
 
 ## 🔐 Requisitos para demostrar Access y SWG
 
-- **DLP del chat** está implementado en la Pages Function y puede probarse con datos de prueba ficticios; el filtro solo cubre mensajes del chat.
+- **DLP del chat** está implementado en el Worker y puede probarse con datos de prueba ficticios; el filtro solo cubre mensajes del chat.
 - **Zero Trust Access (ZTNA)** no protege actualmente una ruta de este repositorio. Para demostrarlo, crea una aplicación self-hosted en Cloudflare Access, asigna el dominio/ruta que quieras proteger y configura una política de acceso con usuarios de prueba.
 - **Gateway/SWG** no inspecciona el tráfico de navegación de este sitio. Configura políticas DNS/HTTP en Cloudflare Gateway y conecta un dispositivo de prueba mediante WARP o un método de enrutamiento compatible.
 - **AI Gateway no es SWG**: protege y observa llamadas a modelos de IA; no sustituye el filtrado web de Gateway.
@@ -238,26 +225,28 @@ wrangler pages dev public --compatibility-date=2024-09-23
 ## 🧪 Verificación Post-Deploy
 
 ```bash
-# 1. Verificar que el sitio responde
-curl -I https://surflatam.pages.dev
+# 1. Verificar que el Worker responde
+curl -I https://surfing-latam.smunoz-91f.workers.dev
 
 # 2. Verificar headers de seguridad
-curl -I https://surflatam.pages.dev | grep -E "X-Frame|Content-Security|Strict-Transport"
+curl -I https://surfing-latam.smunoz-91f.workers.dev | grep -E "X-Frame|Content-Security|Strict-Transport"
 
 # 3. Probar el chatbot (pregunta válida)
-curl -X POST https://surflatam.pages.dev/api/chat \
+curl -X POST https://surfing-latam.smunoz-91f.workers.dev/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "¿Cuáles son los mejores spots de surf en Perú?"}'
+    -d '{"message": "¿Ya funciona esto?"}'
 
 # 4. Verificar DLP (debe ser bloqueado)
-curl -X POST https://surflatam.pages.dev/api/chat \
+curl -X POST https://surfing-latam.smunoz-91f.workers.dev/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "Mi tarjeta es 4111111111111111"}'
+    -d '{"message": "DLP test: test@example.invalid"}'
 
 # 5. Verificar topic guardrail (debe ser bloqueado)
-curl -X POST https://surflatam.pages.dev/api/chat \
+curl -X POST https://surfing-latam.smunoz-91f.workers.dev/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "Háblame de política"}'
+    -d '{"message": "What is the capital of Chile?"}'
+
+# 6. El rate limit responde HTTP 429 después de superar 5 requests/minuto/IP
 ```
 
 ---
@@ -265,35 +254,18 @@ curl -X POST https://surflatam.pages.dev/api/chat \
 ## 📊 Arquitectura Completa
 
 ```
-GitHub (source of truth)
-    │
-    │ push to main
-    ▼
-GitHub Actions (CI/CD)
-    │
-    │ wrangler pages deploy
-    ▼
-Cloudflare Pages (CDN global)
-    ├── public/          → HTML, CSS, JS estático
-    └── functions/api/   → Pages Functions (serverless)
-            │
-            │ POST /api/chat
-            ▼
-        Guardrails (DLP + Topic Filter)
-            │
-            ▼
-        Cloudflare AI Gateway
-        (Rate limit · Cache · Logging)
-            │
-            ▼
-        Workers AI
-        (Llama 3.1 8B Instruct)
-            │
-            ▼
-        Output Guardrail
-            │
-            ▼
-        Respuesta al usuario
+GitHub main → GitHub Actions → wrangler deploy
+                                  │
+                                  ▼
+                     Cloudflare Worker surfing-latam
+                     ├── Workers Static Assets (public/)
+                     └── POST /api/chat
+                           ├── Rate limit (5/min/IP)
+                           ├── DLP del chat
+                           ├── Filtro de alcance
+                           ├── AI Gateway (opcional)
+                           ├── Workers AI (Llama 3.1 8B Fast)
+                           └── Filtro de respuesta
 ```
 
 ---

@@ -140,10 +140,11 @@
       setTyping(false);
 
       if (response.status === 429) {
-        const rateLimitMsg = currentLang === 'pt'
-          ? '⏳ Você enviou muitas mensagens. Por favor, aguarde um momento antes de continuar.'
-          : '⏳ Has enviado muchos mensajes. Por favor espera un momento antes de continuar.';
+        const rateLimitMsg = window.getTranslation
+          ? window.getTranslation('chatRateLimit')
+          : 'Has alcanzado el límite del chat. Espera un minuto antes de volver a intentarlo.';
         appendMsg(rateLimitMsg, 'error');
+        history.pop();
         setLoading(false);
         return;
       }

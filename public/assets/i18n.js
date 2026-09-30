@@ -131,7 +131,8 @@
       chatWelcome: 'Hola. Puedo explicarte los servicios Cloudflare de este demo: Zero Trust Access (ZTNA), Gateway (SWG), DLP, Pages, Workers AI y AI Gateway. También puedo distinguir qué está implementado aquí y qué requiere configuración en Cloudflare.',
       chatBlockedDlp: '🛡️ Bloqueado por el control DLP de este chat de demostración: contiene datos sensibles (tarjetas, credenciales o PII).',
       chatBlockedTopic: 'Solo puedo informar sobre los servicios Cloudflare de este demo: Zero Trust Access (ZTNA), SWG, DLP, Pages, Workers AI y AI Gateway.',
-      chatFooter: 'Workers AI · Alcance limitado · DLP del chat'
+      chatRateLimit: '⏳ Límite del chat alcanzado. Espera un minuto e inténtalo de nuevo.',
+      chatFooter: 'Workers AI · DLP · 5 solicitudes/min'
     },
     
     pt: {
@@ -257,7 +258,8 @@
       chatWelcome: 'Olá. Posso explicar os serviços Cloudflare desta demonstração: Zero Trust Access (ZTNA), Gateway (SWG), DLP, Pages, Workers AI e AI Gateway. Também posso diferenciar o que está implementado aqui do que requer configuração na Cloudflare.',
       chatBlockedDlp: '🛡️ Bloqueada pelo controle DLP deste chat de demonstração: contém dados confidenciais (cartões, credenciais ou PII).',
       chatBlockedTopic: 'Só posso informar sobre os serviços Cloudflare desta demonstração: Zero Trust Access (ZTNA), SWG, DLP, Pages, Workers AI e AI Gateway.',
-      chatFooter: 'Workers AI · Escopo limitado · DLP do chat'
+      chatRateLimit: '⏳ Limite do chat atingido. Aguarde um minuto e tente novamente.',
+      chatFooter: 'Workers AI · DLP · 5 solicitações/min'
     }
   };
 

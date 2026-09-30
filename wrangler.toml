@@ -8,3 +8,9 @@ directory = "./public"
 
 [ai]
 binding = "AI"
+
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1002"
+simple = { limit = 5, period = 60 }
